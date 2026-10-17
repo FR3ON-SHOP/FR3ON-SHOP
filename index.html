@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>متجر فرعون | الرئيسية</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+ --cyan:#00f5f7;
+ --muted:#858b9b;
+}
+
+*{
+ box-sizing:border-box;
+ margin:0;
+ padding:0;
+}
+
+html{
+ scroll-behavior:smooth;
+}
+
+body{
+ background:#000;
+ color:#fff;
+ font-family:Cairo,Tahoma,sans-serif;
+ padding-bottom:95px;
+}
+.warning-box {
+ background: #15090a;
+ border: 1px solid #732222;
+ border-radius: 14px;
+ padding: 22px 18px;
+ margin: 20px auto;
+ max-width: 92%;
+ text-align: center;
+ box-shadow: 0 0 15px rgba(115, 34, 34, 0.2);
+ position: relative;
+ z-index: 10;
+}
+
+.warning-box p {
+ color: #ff4d4d;
+ font-size: 13.5px;
+ line-height: 1.8;
+ font-weight: bold;
+ text-shadow: 0 0 8px rgba(255, 77, 77, 0.6);
+ margin: 0;
+}
+
+/* الهيدر */
+header{
+ height:72px;
+ display:flex;
+ align-items:center;
+ gap:13px;
+ padding:8px 5%;
+ background:#000;
+ border-bottom:1px solid #123036;
+}
+
+header h2{
+ color:var(--cyan);
+ font-size:22px;
+ font-weight:900;
+ text-shadow:0 0 15px #00ffff66;
+}
+
+.logo-small{
+ width:60px;
+ height:60px;
+ border-radius:13px;
+ object-fit:cover;
+ box-shadow:0 0 20px #00eaff55;
+}
+
+/* القسم الرئيسي */
+.hero{
+ min-height:315px;
+ padding:35px 15px 25px;
+ background:
+ radial-gradient(
+ ellipse at 50% 40%,
+ #00353c 0%,
+ #001619 32%,
+ #000707 65%,
+ #000 100%
+ );
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ border-bottom:1px solid #15272b;
+}
+
+.logo-large{
+ width:140px;
+ height:140px;
+ border-radius:15px;
+ object-fit:cover;
+ box-shadow:
+ 0 0 30px #00eaff66,
+ 0 0 65px #00eaff33;
+}
+
+.hero h1{
+ margin-top:25px;
+ font-size:clamp(39px,10vw,54px);
+ font-weight:900;
+ line-height:1.4;
+ white-space:nowrap;
+ background:linear-gradient(
+ 90deg,
+ #00efff,
+ #8effff,
+ #f0ffff
+ );
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+ filter:drop-shadow(0 0 12px #00f5f744);
+}
+
+/* الوصف */
+.description{
+ max-width:600px;
+ margin:auto;
+ text-align:center;
+ color:var(--muted);
+ font-size:15px;
+ line-height:1.9;
+ padding:12px 18px 22px;
+}
+
+/* الأزرار */
+.actions{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ gap:16px;
+ padding:10px 10px 30px;
+}
+
+.actions a{
+ text-decoration:none;
+ font-size:17px;
+ font-weight:800;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ gap:12px;
+ border-radius:50px;
+ transition:.2s;
+}
+
+.primary{
+ background:var(--cyan);
+ color:#001011;
+ min-width:135px;
+ padding:9px 26px;
+ box-shadow:0 0 22px #00ffff66;
+}
+
+.secondary{
+ background:#032123;
+ color:var(--cyan);
+ border:1px solid #008e95;
+ min-width:245px;
+ padding:8px 19px;
+}
+
+.actions a:active{
+ transform:scale(.97);
+}
+
+/* زر الدعم */
+.support{
+ position:fixed;
+ right:18px;
+ bottom:84px;
+ z-index:900;
+ display:flex;
+ align-items:center;
+ gap:10px;
+ background:#010e11;
+ border:1px solid #008f95;
+ color:var(--cyan);
+ border-radius:50px;
+ padding:8px 15px;
+ text-decoration:none;
+ font-size:13px;
+ box-shadow:0 0 16px #00f5f733;
+ cursor:pointer;
+}
+
+/* التنقل السفلي */
+.bottom-nav{
+ position:fixed;
+ bottom:0;
+ left:0;
+ width:100%;
+ background:#0b1018;
+ border-top:1px solid #12353a;
+ display:flex;
+ justify-content:space-around;
+ align-items:center;
+ padding:5px 2px;
+ z-index:1000;
+}
+
+.nav-item{
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:3px;
+ color:#8791a8;
+ font-size:8.5px;
+ text-decoration:none;
+ min-width:0;
+ flex:1;
+ cursor:pointer;
+ position: relative;
+ white-space: nowrap;
+}
+
+.nav-item i{
+ font-size:16px;
+}
+
+.nav-item.active{
+ color:var(--cyan);
+}
+
+.nav-item.active:after{
+ content:"";
+ width:4px;
+ height:4px;
+ background:var(--cyan);
+ border-radius:50%;
+ box-shadow:0 0 8px var(--cyan);
+}
+
+.badge-dot {
+ position: absolute;
+ top: 3px;
+ right: calc(50% - 12px);
+ width: 9px;
+ height: 9px;
+ background-color: #ff4d4d;
+ border-radius: 50%;
+ border: 2px solid #0b1018;
+ box-shadow: 0 0 8px #ff4d4d;
+ display: none;
+}
+.badge-dot.show {
+ display: block;
+}
+
+.page-section {
+ display: none;
+}
+.page-section.active-page {
+ display: block;
+}
+
+.category-modal {
+ display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: rgba(0,0,0,0.85);
+ z-index: 2000;
+ justify-content: center;
+ align-items: center;
+}
+.category-modal.show {
+ display: flex;
+}
+.category-content {
+ background: #090c10;
+ border: 1px solid #1c2634;
+ border-radius: 24px;
+ width: 90%;
+ max-width: 400px;
+ padding: 22px 15px;
+ box-shadow: 0 4px 30px rgba(0,0,0,0.9);
+ max-height: 85vh;
+ display: flex;
+ flex-direction: column;
+}
+.category-option {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 16px 14px;
+ border-bottom: 1px solid #161b22;
+ color: #fff;
+ cursor: pointer;
+ font-size: 15px;
+ font-weight: bold;
+}
+.category-option:last-child {
+ border-bottom: none;
+}
+
+#imageLightBox {
+ display: none;
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ background: rgba(0, 0, 0, 0.92);
+ z-index: 3000;
+ justify-content: center;
+ align-items: center;
+ padding: 20px;
+}
+#imageLightBox.show {
+ display: flex;
+}
+#imageLightBox img {
+ max-width: 100%;
+ max-height: 90vh;
+ border-radius: 12px;
+ object-fit: contain;
+ box-shadow: 0 0 25px rgba(0, 245, 247, 0.3);
+ border: 1px solid #1c2634;
+}
+#imageLightBox .close-btn {
+ position: absolute;
+ top: 20px;
+ right: 20px;
+ background: #0b1018;
+ color: var(--cyan);
+ border: 1px solid var(--cyan);
+ border-radius: 50%;
+ width: 40px;
+ height: 40px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 18px;
+ cursor: pointer;
+ box-shadow: 0 0 10px rgba(0,245,247,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img class="fr3on-logo logo-small" alt="FR3ON STORE">
+<h2 id="headerTitleText">متجر فرعون</h2>
+</header>
+
+<!-- 1. الرئيسية -->
+<div id="homePage" class="page-section active-page">
+
+<section class="hero">
+<img class="fr3on-logo logo-large" alt="FR3ON STORE" style="cursor: pointer;" onclick="openLightBox(currentLogo)">
+<h1 id="heroTitleText">متجر فرعون</h1>
+</section>
+
+<p class="description" id="heroDescText">
+وجهة ألعاب بلمسة نيونية، سريعة، ومهيأة لعرض الروابط والتواصل مع مجتمع FR3ON Store.
+</p>
+
+<div class="actions">
+<a class="primary" href="#" onclick="switchPage('postsPage', event); updateNavById('navPosts');">المنشورات</a>
+<a class="secondary" id="homeAddAdBtn" href="#" onclick="switchPage('addAdPage', event); updateNavById('navAddAd');" style="display: none;">
+<i class="fa-solid fa-plus-circle"></i> أضف إعلاناً
+</a>
+<a class="secondary" href="#guide">
+<i class="fa-solid fa-play"></i> كيفية استخدام المتجر
+</a>
+</div>
+
+<div class="warning-box">
+<p>احذر النصب هذه هي الروابط والحسابات الرسمية الوحيدة<br>الخاصة بمتجر فرعون الإدارة غير مسؤولة عن<br>أي تعامل يتم خارج الروابط والحسابات الرسمية.</p>
+</div>
+
+<section class="store-live-section" style="background: #090c10; border: 1px solid #1c2634; border-radius: 20px; padding: 25px 20px; margin: 0 auto 20px auto; max-width: 92%; text-align: right; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);">
+<div style="text-align: right; margin-bottom: 15px;">
+<span style="display: inline-block; background: #0b1f24; color: #00f5f7; font-size: 12px; font-weight: bold; padding: 6px 18px; border-radius: 20px; border: 1px solid rgba(0, 245, 247, 0.2);">متجر فرعون الرسمي</span>
+</div>
+<h2 style="color: #ffffff; font-size: 22px; font-weight: bold; line-height: 1.5; margin-bottom: 15px; text-align: right;">اكتشف روابط المتجر الرسمية في لوحة واحدة بتجربة فاخرة وسريعة.</h2>
+<p style="color: #7b8396; font-size: 13px; line-height: 1.7; margin: 0; text-align: right;">واجهة استقبال متحركة مصممة لتقديم تنبيهات المتجر وروابط التواصل الاجتماعي بشكل واضح واحترافي على الهاتف وسطح المكتب.</p>
+</section>
+
+<div style="display: flex; justify-content: space-between; align-items: center; max-width: 92%; margin: 25px auto 12px auto; padding: 0 5px;" dir="ltr">
+  <span style="display: inline-block; background: #161b22; color: #8b949e; font-size: 11px; font-weight: bold; padding: 4px 12px; border-radius: 20px; border: 1px solid #30363d;" dir="rtl">روابط متجددة</span>
+  <h3 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0; text-align: right;" dir="rtl">قنوات التواصل</h3>
+</div>
+<div id="dynamicChannelsContainer"></div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; max-width: 92%; margin: 30px auto 12px auto; padding: 0 5px;" dir="ltr">
+  <span style="display: inline-block; background: #161b22; color: #8b949e; font-size: 11px; font-weight: bold; padding: 4px 12px; border-radius: 20px; border: 1px solid #30363d;" dir="rtl">أرقام الدعم</span>
+  <h3 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0; text-align: right;" dir="rtl">تواصل مع الإدارة</h3>
+</div>
+<p style="color: #8b949e; font-size: 12px; text-align: right; max-width: 92%; margin: 0 auto 15px auto;">الأرقام الرسمية المعتمدة للدعم الفني والوساطة</p>
+<div id="dynamicPhonesContainer" style="max-width: 92%; margin: 0 auto 20px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;" dir="rtl"></div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; max-width: 92%; margin: 30px auto 12px auto; padding: 0 5px;" dir="ltr">
+  <div style="width: 42px; height: 42px; background: #0b1f24; border: 1px solid rgba(0, 245, 247, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #00f5f7; font-size: 18px;"><i class="fa-brands fa-telegram"></i></div>
+  <h3 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0; text-align: right;" dir="rtl">تواصل عبر تيليجرام</h3>
+</div>
+<p style="color: #8b949e; font-size: 12px; text-align: right; max-width: 92%; margin: 0 auto 15px auto;">الدعم الفني عبر تيليجرام</p>
+<div id="dynamicTelegramContainer" style="max-width: 92%; margin: 0 auto 20px auto;" dir="rtl"></div>
+
+</div>
+
+<!-- 2. صفحة المنشورات -->
+<div id="postsPage" class="page-section">
+  <div style="max-width: 92%; margin: 25px auto; background: #090c10; border: 1px solid #1c2634; border-radius: 25px; padding: 25px 15px; box-shadow: 0 4px 25px rgba(0,0,0,0.8); text-align: right;" dir="rtl">
+    <div style="margin-bottom: 25px; padding: 0 10px;">
+      <h2 style="color: #ffffff; font-size: 24px; font-weight: bold; line-height: 1.4; margin-bottom: 10px;">تصفح المنشورات والإعلانات</h2>
+      <p style="color: #8b949e; font-size: 13px; line-height: 1.6;">ابحث داخل المنشورات أو استخدم فلتر الفئات لعرض القسم الذي تريده.</p>
+    </div>
+
+    <div style="background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
+      <i class="fa-solid fa-magnifying-glass" style="color: var(--cyan); font-size: 18px;"></i>
+      <div style="flex-grow: 1;">
+        <div style="color: var(--cyan); font-size: 11px; margin-bottom: 2px;">ابحث</div>
+        <input type="text" id="searchPostsInput" placeholder="ابحث باسم المنشور أو الوصف..." onkeyup="filterUserPosts()" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13px;">
+      </div>
+    </div>
+
+    <div onclick="openFilterCategoryModal()" style="background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <i class="fa-solid fa-tag" style="color: var(--cyan); font-size: 18px;"></i>
+        <div>
+          <div style="color: var(--cyan); font-size: 11px; margin-bottom: 2px;">الفئة</div>
+          <div id="filterSelectedCategoryText" style="color: white; font-size: 14px; font-weight: bold;">الكل</div>
+        </div>
+      </div>
+      <i class="fa-solid fa-chevron-down" style="color: var(--cyan); font-size: 14px;"></i>
+    </div>
+  </div>
+
+  <div id="allPostsContainer" style="max-width: 92%; margin: 20px auto; text-align: right;" dir="rtl"></div>
+</div>
+
+<!-- 3. صفحة إضافة إعلان -->
+<div id="addAdPage" class="page-section">
+  <div style="max-width: 92%; margin: 25px auto; background: #090c10; border: 1px solid #008e95; border-radius: 25px; padding: 25px 20px; box-shadow: 0 4px 25px rgba(0,245,247,0.15); text-align: right;" dir="rtl">
+    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #1c2634; padding-bottom: 18px;">
+      <div style="width: 50px; height: 50px; background: #0b1f24; border: 1px solid rgba(0,245,247,0.3); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: var(--cyan); font-size: 22px; flex-shrink: 0;"><i class="fa-solid fa-file-pen"></i></div>
+      <div>
+        <h3 style="color: #ffffff; font-size: 20px; font-weight: 900; margin-bottom: 4px;">إضافة إعلان جديد</h3>
+        <p style="color: #8b949e; font-size: 12px; margin: 0;">أنشئ إعلانك الآن وسيتم نشره أو مراجعته حسب الصلاحيات.</p>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div>
+        <label style="display: block; color: #fff; font-size: 13.5px; margin-bottom: 8px; font-weight: bold;">رقم الواتساب</label>
+        <div style="display: flex; gap: 8px;" dir="ltr">
+          <div onclick="openCountryModal('ad')" id="adCountryBtn" style="background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 8px; width: 110px; cursor: pointer;">
+            <span id="adFlag">🇪🇬</span>
+            <span id="adCode" style="color: #fff; font-weight: bold; font-size: 14px;">+20</span>
+            <i class="fa-solid fa-chevron-down" style="color: #8b949e; font-size: 11px;"></i>
+          </div>
+          <div style="flex-grow: 1; background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center;">
+            <input type="tel" id="userAdPhone" placeholder="1003481108" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="ltr">
+          </div>
+        </div>
+      </div>
+      <div>
+        <label style="display: block; color: #fff; font-size: 13.5px; margin-bottom: 8px; font-weight: bold;">الفئة</label>
+        <select id="userAdCategory" style="width: 100%; background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 14px 18px; color: #fff; outline: 0; font-size: 14px;">
+          <option value="" disabled selected>اختر الفئة</option>
+          <option value="فري فاير">فري فاير</option>
+          <option value="ببجي">ببجي</option>
+          <option value="بيس فيفا و كلاش">بيس فيفا و كلاش</option>
+          <option value="بلود سترايك">بلود سترايك</option>
+          <option value="روبلوكس">روبلوكس</option>
+          <option value="حسابات سوشيال ميديا">حسابات سوشيال ميديا</option>
+          <option value="اخري">اخري</option>
+        </select>
+      </div>
+      <div>
+        <label style="display: block; color: #fff; font-size: 13.5px; margin-bottom: 8px; font-weight: bold;">السعر</label>
+        <div style="background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 4px 6px 4px 16px; display: flex; align-items: center;" dir="ltr">
+          <input type="text" id="userAdPrice" value="0" style="flex-grow: 1; background: transparent; border: 0; outline: 0; color: white; font-size: 16px; padding: 8px;" dir="rtl">
+          <div onclick="openCurrencyModal()" id="currencyBtn" style="background: #0b2226; color: var(--cyan); font-weight: 900; font-size: 14px; padding: 8px 16px; border-radius: 10px; border: 1px solid rgba(0,245,247,0.3); cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <span id="selectedCurrencyText">EGP</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label style="display: block; color: #fff; font-size: 13.5px; margin-bottom: 8px; font-weight: bold;">وصف الإعلان</label>
+        <textarea id="userAdDesc" rows="4" placeholder="اكتب تفاصيل الحساب..." style="width: 100%; background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 14px 18px; color: #fff; outline: 0; resize: none;" dir="rtl"></textarea>
+      </div>
+      <div>
+        <label style="display: block; color: #fff; font-size: 13.5px; margin-bottom: 8px; font-weight: bold;">صورة الإعلان</label>
+        <div onclick="document.getElementById('userAdImageFile').click()" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: #071418; border: 1px dashed #008e95; border-radius: 16px; padding: 25px; cursor: pointer; text-align: center;">
+          <div style="width: 48px; height: 48px; background: #0b1f24; border: 1px solid rgba(0,245,247,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--cyan); font-size: 20px;"><i class="fa-solid fa-image"></i></div>
+          <div style="color: #fff; font-size: 14px; font-weight: bold;">اختر صورة الإعلان</div>
+          <input type="file" id="userAdImageFile" accept="image/*" style="display: none;" onchange="handleSingleImagePick(event)">
+        </div>
+        <div id="selectedImagePreviewContainer" style="margin-top: 10px;"></div>
+      </div>
+      <button onclick="submitUserAd()" style="background: var(--cyan); color: #000; border: 0; border-radius: 35px; padding: 15px; font-weight: 900; font-size: 16px; cursor: pointer; margin-top: 10px; box-shadow: 0 0 20px rgba(0,245,247,0.4);">إرسال الإعلان 🚀</button>
+    </div>
+  </div>
+</div>
+
+<!-- 4. قناة فرعون -->
+<div id="adminChannelPage" class="page-section">
+  <!-- شريط منشور مثبت احترافي تماماً مثل الصورة -->
+  <div style="max-width: 92%; margin: 20px auto 15px auto; background: #090c10; border: 1px solid #1c2634; border-radius: 16px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;" dir="rtl">
+    <div style="display: flex; align-items: center; gap: 10px; overflow: hidden;">
+      <i class="fa-solid fa-thumbtack" style="color: #ffb703; font-size: 16px; flex-shrink: 0;"></i>
+      <span style="color: #ffb703; font-weight: bold; font-size: 13px; white-space: nowrap;">منشور مثبت</span>
+      <span style="color: #8b949e; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">| فرصة من فرعون 🔥</span>
+    </div>
+    <div style="display: flex; gap: 6px; flex-shrink: 0;" dir="ltr">
+      <button style="background: #161b22; color: #fff; border: 1px solid #30363d; border-radius: 8px; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-chevron-left" style="font-size: 11px;"></i></button>
+      <span style="color: #8b949e; font-size: 12px; display: flex; align-items: center; padding: 0 4px;">1/2</span>
+      <button style="background: #161b22; color: #fff; border: 1px solid #30363d; border-radius: 8px; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></button>
+    </div>
+  </div>
+
+  <div style="max-width: 92%; margin: 15px auto; background: linear-gradient(145deg, #090c10, #040608); border: 1px solid #1c2634; border-radius: 25px; padding: 30px 20px; box-shadow: 0 4px 30px rgba(0,0,0,0.8); text-align: center; display: flex; align-items: center; justify-content: space-between; gap: 15px;" dir="rtl">
+    <div style="text-align: right; flex-grow: 1;">
+      <h2 style="color: #ffffff; font-size: 24px; font-weight: 900; margin-bottom: 8px;">قناة فرعون</h2>
+      <p style="color: #8b949e; font-size: 12.5px; line-height: 1.6; margin: 0;">تابع أحدث العروض والمنشورات الرسمية من الإدارة مباشرة.</p>
+    </div>
+    <div style="width: 80px; height: 80px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,245,247,0.3); flex-shrink: 0; cursor: pointer;" onclick="openLightBox(currentLogo)">
+      <img class="fr3on-logo" style="width: 100%; height: 100%; object-fit: cover;" alt="FR3ON">
+    </div>
+  </div>
+
+  <div id="adminPostFormContainer" style="display: none; max-width: 92%; margin: 25px auto; background: #090c10; border: 1px solid #008e95; border-radius: 25px; padding: 25px 15px; box-shadow: 0 4px 25px rgba(0,245,247,0.15); text-align: right;" dir="rtl">
+    <div style="margin-bottom: 20px; padding: 0 10px; border-bottom: 1px solid #1c2634; padding-bottom: 15px;">
+      <span style="display: inline-block; background: #0b1f24; color: #00f5f7; font-size: 11px; font-weight: bold; padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(0, 245, 247, 0.3); margin-bottom: 8px;">لوحة تحكم المطور</span>
+      <h3 style="color: #ffffff; font-size: 20px; font-weight: bold;">إضافة منشور جديد للقناة</h3>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 15px; padding: 0 10px;">
+      <div>
+        <label style="display: block; color: var(--cyan); font-size: 13px; margin-bottom: 5px; font-weight: bold;">عنوان المنشور / المنتج:</label>
+        <input type="text" id="postTitleInput" placeholder="مثال: حساب فري فاير أسطوري..." style="width: 100%; background: #071418; border: 1px solid #006b72; border-radius: 12px; padding: 12px; color: #fff; outline: 0; font-size: 13px;">
+      </div>
+      <div>
+        <label style="display: block; color: var(--cyan); font-size: 13px; margin-bottom: 5px; font-weight: bold;">صورة المنشور:</label>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <input type="text" id="postImageInput" placeholder="رابط الصورة أو اختر من الجهاز..." style="flex-grow: 1; background: #071418; border: 1px solid #006b72; border-radius: 12px; padding: 12px; color: #fff; outline: 0; font-size: 12px;" dir="ltr">
+          <div onclick="document.getElementById('imageFilePicker').click()" style="background: #00252b; color: var(--cyan); border: 1px solid var(--cyan); border-radius: 12px; padding: 11px 15px; font-size: 13px; font-weight: bold; cursor: pointer; white-space: nowrap;">اختر صورة</div>
+          <input type="file" id="imageFilePicker" accept="image/*" style="display: none;" onchange="handleImagePick(event)">
+        </div>
+      </div>
+      <div>
+        <label style="display: block; color: var(--cyan); font-size: 13px; margin-bottom: 5px; font-weight: bold;">وصف المنشور:</label>
+        <textarea id="postDescInput" rows="4" placeholder="التفاصيل..." style="width: 100%; background: #071418; border: 1px solid #006b72; border-radius: 12px; padding: 12px; color: #fff; outline: 0; resize: none;"></textarea>
+      </div>
+      <div>
+        <label style="display: block; color: var(--cyan); font-size: 13px; margin-bottom: 5px; font-weight: bold;">رابط التواصل:</label>
+        <input type="text" id="postLinkInput" placeholder="https://wa.me/..." style="width: 100%; background: #071418; border: 1px solid #006b72; border-radius: 12px; padding: 12px; color: #fff; outline: 0; font-size: 13px;" dir="ltr">
+      </div>
+      <button type="button" onclick="addNewPostToChannel()" style="background: var(--cyan); color: #000; border: 0; border-radius: 30px; padding: 15px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 10px; box-shadow: 0 0 15px rgba(0,245,247,0.4); position: relative; z-index: 50;">نشر في القناة الآن 🚀</button>
+    </div>
+  </div>
+
+  <div id="channelPostsContainer" style="max-width: 92%; margin: 20px auto; text-align: right;" dir="rtl"></div>
+</div>
+
+<!-- 5. صفحة الرسائل وإدارة محادثات العملاء للمطور -->
+<div id="messagesPage" class="page-section">
+  <div style="max-width: 92%; margin: 30px auto; background: #090c10; border: 1px solid #1c2634; border-radius: 25px; padding: 30px 20px; box-shadow: 0 4px 25px rgba(0,0,0,0.8); text-align: right;" dir="rtl">
+    <h2 style="color: var(--cyan); font-size: 22px; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-comment"></i> الرسائل ومحادثات العملاء</h2>
+    
+    <div id="messagesAdminSection" style="display: block; margin-bottom: 25px; border-bottom: 1px solid #1c2634; padding-bottom: 20px;">
+      <div style="color: #8b949e; font-size: 13px; margin-bottom: 12px;">طلبات الإعلانات الجديدة بانتظار موافقتك:</div>
+      <div id="adminPendingRequestsContainer"></div>
+    </div>
+
+    <div id="adminChatsListSection" style="display: none;">
+      <h3 style="color: #fff; font-size: 17px; font-weight: bold; margin-bottom: 12px;">محادثات العملاء النشطة</h3>
+      <div style="color: #8b949e; font-size: 12px; margin-bottom: 15px;">اختر أي مستخدم أدناه لفتح محادثته الخاصة والرد عليه مباشرة:</div>
+      <div id="adminCustomerChatsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
+    </div>
+
+    <div id="normalUserMessagesBox" style="display: none;">
+      <p style="color: #8b949e; font-size: 13px;">لا توجد رسائل جديدة حالياً.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 6. صفحة حسابي الشخصي -->
+<div id="profilePage" class="page-section">
+  <div style="max-width: 92%; margin: 30px auto; background: #090c10; border: 1px solid #1c2634; border-radius: 25px; padding: 30px 20px; box-shadow: 0 4px 25px rgba(0,0,0,0.8); text-align: right;" dir="rtl">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #162230; padding-bottom: 20px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+          <h2 style="color: var(--cyan); font-size: 22px; font-weight: 900;">الملف الشخصي</h2>
+        </div>
+        <div id="profileUserName" style="color: #fff; font-size: 20px; font-weight: bold;">إدارة فرعون</div>
+      </div>
+      <div style="width: 70px; height: 70px; border-radius: 16px; overflow: hidden; border: 1px solid var(--cyan); flex-shrink: 0; cursor: pointer;" onclick="openLightBox(currentLogo)">
+        <img class="fr3on-logo" style="width: 100%; height: 100%; object-fit: cover;" alt="Profile">
+      </div>
+    </div>
+    
+    <div style="background: #071418; border: 1px solid #162230; border-radius: 16px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+      <div id="profileUserEmail" style="color: #fff; font-size: 14px; direction: ltr;">konbela.ff.30@gmail.com</div>
+      <div style="color: #8b949e; font-size: 14px;">البريد الإلكتروني <i class="fa-regular fa-envelope" style="color: var(--cyan);"></i></div>
+    </div>
+
+    <div style="background: #071418; border: 1px solid #162230; border-radius: 16px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px;">
+      <div id="profileUserAdsCount" style="color: var(--cyan); font-size: 16px; font-weight: bold;">٠ إعلان</div>
+      <div style="color: #8b949e; font-size: 14px;">إجمالي المنشورات <i class="fa-solid fa-clock-rotate-left" style="color: var(--cyan);"></i></div>
+    </div>
+
+    <div id="masterAdminPanel" style="display: block; background: #071418; border: 2px solid #008e95; border-radius: 20px; padding: 22px; margin-bottom: 25px;">
+      <h3 style="color: var(--cyan); font-size: 18px; font-weight: 900; margin-bottom: 8px;"><i class="fa-solid fa-toolbox"></i> لوحة تحكم المطور الشاملة</h3>
+      <p style="color: #8b949e; font-size: 12px; margin-bottom: 20px;">تعديل الهوية وصورة المتجر وقنوات التواصل والأرقام.</p>
+      
+      <!-- زر تغيير صورة المتجر -->
+      <div style="margin-bottom: 20px; border-bottom: 1px solid #162230; padding-bottom: 15px;">
+        <label style="color: #8b949e; font-size: 12px; display: block; margin-bottom: 8px;">صورة شعار المتجر (اللوجو)</label>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <button onclick="document.getElementById('adminLogoFilePicker').click()" style="background: var(--cyan); color: #000; border: 0; border-radius: 12px; padding: 10px 18px; font-weight: bold; font-size: 13px; cursor: pointer;">اختر صورة جديدة 🖼️</button>
+          <input type="file" id="adminLogoFilePicker" accept="image/*" style="display: none;" onchange="handleAdminLogoPick(event)">
+          <span style="color: #8b949e; font-size: 11px;">سيتم تحديثها فوراً في الموقع</span>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 20px; border-bottom: 1px solid #162230; padding-bottom: 15px;">
+        <label style="color: #8b949e; font-size: 12px; display: block; margin-bottom: 4px;">اسم المتجر</label>
+        <input type="text" id="adminStoreNameInput" value="متجر فرعون" style="width: 100%; background: #02090c; border: 1px solid #006b72; border-radius: 10px; padding: 10px; color: #fff; font-size: 13px; margin-bottom: 8px;">
+        <button onclick="saveStoreIdentity()" style="background: #006b72; color: #fff; border: 0; border-radius: 12px; padding: 8px 16px; font-weight: bold; font-size: 12px; cursor: pointer;">حفظ الهوية</button>
+      </div>
+
+      <div style="margin-bottom: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <h4 style="color: #fff; font-size: 14px; font-weight: bold;">قنوات التواصل</h4>
+          <button onclick="addNewChannelItem()" style="background: var(--cyan); color: #000; border: 0; border-radius: 8px; padding: 4px 10px; font-weight: bold; font-size: 11px; cursor: pointer;">+ إضافة</button>
+        </div>
+        <div id="adminChannelsEditorContainer" style="display: flex; flex-direction: column; gap: 10px; max-height: 200px; overflow-y: auto;"></div>
+        <button onclick="saveChannelsChanges()" style="background: var(--cyan); color: #000; border: 0; border-radius: 12px; padding: 8px 16px; font-weight: bold; font-size: 12px; cursor: pointer; margin-top: 10px;">حفظ القنوات</button>
+      </div>
+    </div>
+
+    <button onclick="logout()" style="background: #ff4d4d; color: #fff; border: 0; border-radius: 25px; padding: 10px 20px; font-weight: bold; cursor: pointer;">تسجيل الخروج</button>
+  </div>
+</div>
+
+<!-- 7. صفحة تسجيل الدخول -->
+<div id="loginPage" class="page-section">
+  <div style="max-width: 92%; margin: 30px auto; background: #090c10; border: 1px solid #1c2634; border-radius: 25px; padding: 30px 20px; text-align: right;" dir="rtl">
+    <div style="text-align: center; margin-bottom: 25px;">
+      <h2 style="color: #ffffff; font-size: 26px; font-weight: 900; margin-bottom: 8px;">تسجيل الدخول</h2>
+      <p style="color: #8b949e; font-size: 13.5px;">أهلاً بك مجدداً في متجر فرعون</p>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <label style="display: block; color: #8b949e; font-size: 13px; margin-bottom: 8px; font-weight: bold;">البريد الإلكتروني</label>
+        <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px;">
+          <input type="text" id="loginEmailInput" value="konbela.ff.30@gmail.com" placeholder="البريد" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13.5px;" dir="rtl">
+        </div>
+      </div>
+      <div>
+        <label style="display: block; color: #8b949e; font-size: 13px; margin-bottom: 8px; font-weight: bold;">كلمة المرور</label>
+        <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px;">
+          <input type="password" id="loginPasswordInput" value="123456" placeholder="••••••••" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="ltr">
+        </div>
+      </div>
+      <button onclick="loginSuccess()" style="background: var(--cyan); color: #000; border: 0; border-radius: 35px; padding: 15px; font-weight: 900; font-size: 16px; cursor: pointer;">دخول</button>
+      <div style="text-align: center; margin-top: 10px;">
+        <a href="#" onclick="switchPage('registerPage', event); updateNavById('navRegister');" style="color: var(--cyan); font-size: 13.5px; font-weight: bold; text-decoration: none;">أنشئ حساباً جديداً</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. صفحة إنشاء حساب -->
+<div id="registerPage" class="page-section">
+  <div style="max-width: 92%; margin: 25px auto; background: #090c10; border: 1px solid #1c2634; border-radius: 25px; padding: 30px 20px; box-shadow: 0 4px 25px rgba(0,0,0,0.8); text-align: right;" dir="rtl">
+    
+    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+      <div style="width: 70px; height: 70px; background: #071418; border: 1px solid rgba(0,245,247,0.4); border-radius: 20px; display: flex; align-items: center; justify-content: center; color: var(--cyan); font-size: 28px; box-shadow: 0 0 20px rgba(0,245,247,0.2);">
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h2 style="color: #ffffff; font-size: 24px; font-weight: 900; margin-bottom: 6px;">إنشاء حساب جديد</h2>
+      <p style="color: #8b949e; font-size: 13px;">انضم لمجتمع متجر فرعون الآن</p>
+    </div>
+
+    <div style="background: #15090a; border: 1px solid #732222; border-radius: 14px; padding: 16px; margin-bottom: 20px; text-align: right; box-shadow: 0 0 12px rgba(115, 34, 34, 0.2);">
+      <p style="color: #ff4d4d; font-size: 12px; line-height: 1.7; font-weight: bold; margin: 0;">
+        <i class="fa-solid fa-triangle-exclamation"></i> تنبيه هام: يرجى الاحتفاظ بكلمة المرور الخاصة بك بعناية. بدونها لن تتمكن من الوصول إلى حسابك أو العثور على إعلاناتك وإدارتها لاحقاً.
+      </p>
+    </div>
+
+    <div style="display: flex; background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 4px; margin-bottom: 20px;">
+      <div id="regTabEmail" onclick="setRegMethod('email')" style="flex: 1; text-align: center; padding: 10px; border-radius: 12px; font-size: 13px; font-weight: bold; cursor: pointer; background: #00252b; color: var(--cyan); border: 1px solid rgba(0,245,247,0.3);">البريد الإلكتروني</div>
+      <div id="regTabPhone" onclick="setRegMethod('phone')" style="flex: 1; text-align: center; padding: 10px; border-radius: 12px; font-size: 13px; font-weight: bold; cursor: pointer; color: #8b949e;">رقم الهاتف</div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div>
+        <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+          <input type="text" id="regNameInput" placeholder="الاسم بالكامل" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="rtl">
+          <i class="fa-regular fa-user" style="color: #8b949e; font-size: 16px;"></i>
+        </div>
+      </div>
+
+      <div id="regIdentifierContainer">
+        <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+          <input type="text" id="regEmailInput" placeholder="البريد الإلكتروني" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="rtl">
+          <i class="fa-regular fa-envelope" style="color: #8b949e; font-size: 16px;"></i>
+        </div>
+      </div>
+
+      <div id="regPhoneContainer" style="display: none;">
+        <div style="display: flex; gap: 8px;" dir="ltr">
+          <div onclick="openCountryModal('reg')" id="regCountryBtn" style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 12px 14px; display: flex; align-items: center; gap: 8px; width: 110px; cursor: pointer;">
+            <span id="regFlag">🇪🇬</span>
+            <span id="regCode" style="color: #fff; font-weight: bold; font-size: 14px;">+20</span>
+            <i class="fa-solid fa-chevron-down" style="color: #8b949e; font-size: 11px;"></i>
+          </div>
+          <div style="flex-grow: 1; background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center;">
+            <input type="tel" id="regPhoneInput" placeholder="1003481108" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="ltr">
+          </div>
+        </div>
+        <p style="color: #8b949e; font-size: 11px; text-align: right; margin-top: 6px;">اكتب رقم الهاتف بدون الصفر الأول (مثال: 1003481108)</p>
+      </div>
+
+      <div>
+        <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+          <input type="password" id="regPasswordInput" placeholder="كلمة المرور" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="rtl">
+          <i class="fa-regular fa-eye-slash" onclick="toggleRegPassword()" style="color: #8b949e; font-size: 16px; cursor: pointer;" id="regEyeIcon"></i>
+          <i class="fa-solid fa-lock" style="color: #8b949e; font-size: 16px;"></i>
+        </div>
+      </div>
+
+      <div>
+        <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+          <input type="password" id="regConfirmPasswordInput" placeholder="تأكيد كلمة المرور" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="rtl">
+          <i class="fa-solid fa-lock" style="color: #8b949e; font-size: 16px;"></i>
+        </div>
+      </div>
+
+      <button onclick="registerSuccess()" style="background: var(--cyan); color: #000; border: 0; border-radius: 35px; padding: 15px; font-weight: 900; font-size: 16px; cursor: pointer; margin-top: 5px; box-shadow: 0 0 20px rgba(0,245,247,0.4);">إنشاء حساب</button>
+
+      <div style="text-align: center; margin-top: 10px;">
+        <span style="color: #8b949e; font-size: 13.5px;">لديك حساب بالفعل؟ </span>
+        <a href="#" onclick="switchPage('loginPage', event); updateNavById('navLogin');" style="color: var(--cyan); font-size: 13.5px; font-weight: bold; text-decoration: none;">سجل دخولك</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 💬 نافذة شات الدعم المباشر -->
+<div id="supportChatModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 5000; flex-direction: column;" dir="rtl">
+  <div style="height: 70px; background: #000; border-bottom: 1px solid #123036; display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div style="width: 45px; height: 45px; border-radius: 12px; overflow: hidden; border: 1px solid var(--cyan);">
+        <img class="fr3on-logo" style="width:100%; height:100%; object-fit:cover;" alt="Admin">
+      </div>
+      <div>
+        <div id="chatHeaderTitle" style="color: #fff; font-size: 16px; font-weight: bold;">إدارة فرعون (الدعم المباشر)</div>
+        <div style="color: var(--cyan); font-size: 11.5px; display: flex; align-items: center; gap: 5px;">
+          <span style="width: 7px; height: 7px; background: var(--cyan); border-radius: 50%;"></span> محادثة خاصة
+        </div>
+      </div>
+    </div>
+    <div onclick="closeSupportChat()" style="color: var(--cyan); font-size: 20px; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: #0b1018; border-radius: 50%; border: 1px solid #1c2634;">
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+  </div>
+
+  <div id="chatMessagesContainer" style="flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #000;"></div>
+
+  <div style="padding: 12px 20px; background: #000; border-top: 1px solid #123036; display: flex; align-items: center; gap: 12px;">
+    <div onclick="document.getElementById('chatFileInput').click()" style="color: #8b949e; font-size: 20px; cursor: pointer; padding: 10px;">
+      <i class="fa-solid fa-paperclip"></i>
+    </div>
+    <input type="file" id="chatFileInput" accept="image/*" style="display: none;" onchange="sendChatImage(event)">
+    <div style="flex-grow: 1; background: #090c10; border: 1px solid #1c2634; border-radius: 25px; padding: 4px 18px; display: flex; align-items: center;">
+      <input type="text" id="chatInputText" placeholder="اكتب رسالة..." onkeypress="checkChatEnter(event)" style="width: 100%; background: transparent; border: 0; outline: 0; color: #fff; font-size: 14px; padding: 8px 0;" dir="rtl">
+    </div>
+    <div onclick="sendUserChatMessage()" style="width: 45px; height: 45px; background: #0b2226; border: 1px solid rgba(0,245,247,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--cyan); cursor: pointer;">
+      <i class="fa-solid fa-paper-plane"></i>
+    </div>
+  </div>
+</div>
+
+<!-- 💬 نافذة التعليقات المطابقة للتصميم المطلوب -->
+<div id="commentsModal" style="display: none; position: fixed; bottom: 0; left: 0; width: 100%; height: 80vh; background: #090c10; border-top: 1px solid #1c2634; border-radius: 25px 25px 0 0; z-index: 6000; flex-direction: column; box-shadow: 0 -10px 30px rgba(0,0,0,0.9);" dir="rtl">
+  <div style="display: flex; flex-direction: column; align-items: center; padding: 12px; border-bottom: 1px solid #161b22; position: relative;">
+    <div style="width: 40px; height: 4px; background: #30363d; border-radius: 2px; margin-bottom: 10px;"></div>
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0 15px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span id="commentsCountBadge" style="background: #0b1f24; color: var(--cyan); font-size: 12px; padding: 2px 10px; border-radius: 12px; border: 1px solid rgba(0,245,247,0.3);">1</span>
+        <h3 style="color: #fff; font-size: 18px; font-weight: bold;">التعليقات</h3>
+        <i class="fa-regular fa-comment" style="color: var(--cyan);"></i>
+      </div>
+      <div onclick="closeCommentsModal()" style="color: #8b949e; font-size: 18px; cursor: pointer; width: 32px; height: 32px; background: #161b22; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-xmark"></i></div>
+    </div>
+  </div>
+
+  <div id="commentsListContainer" style="flex-grow: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;"></div>
+
+  <div style="padding: 15px; background: #05080c; border-top: 1px solid #161b22; display: flex; align-items: center; gap: 10px;">
+    <div style="flex-grow: 1; background: #090c10; border: 1px solid #1c2634; border-radius: 20px; padding: 4px 16px; display: flex; align-items: center;">
+      <input type="text" id="newCommentInput" placeholder="اكتب تعليقاً..." onkeypress="checkCommentEnter(event)" style="width: 100%; background: transparent; border: 0; outline: 0; color: #fff; font-size: 13.5px; padding: 8px 0;" dir="rtl">
+    </div>
+    <div onclick="submitNewComment()" style="width: 42px; height: 42px; background: #0b2226; border: 1px solid rgba(0,245,247,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--cyan); cursor: pointer;">
+      <i class="fa-solid fa-paper-plane"></i>
+    </div>
+  </div>
+</div>
+
+<!-- نافذة اختيار الدول مع حقل البحث -->
+<div id="countryModal" class="category-modal" onclick="closeCountryModal(event)">
+  <div class="category-content" onclick="event.stopPropagation()">
+    <div style="color: var(--cyan); font-size: 16px; font-weight: bold; margin-bottom: 12px; text-align: center;">اختر الدولة</div>
+    <div style="background: #071418; border: 1px solid #006b72; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+      <i class="fa-solid fa-magnifying-glass" style="color: var(--cyan); font-size: 14px;"></i>
+      <input type="text" id="countrySearchInput" placeholder="ابحث عن الدولة أو الرمز..." onkeyup="filterCountries()" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13px;" dir="rtl">
+    </div>
+    <div id="countriesListContainer" style="overflow-y: auto; max-height: 55vh;"></div>
+  </div>
+</div>
+
+<!-- نافذة اختيار العملات مع حقل البحث -->
+<div id="currencyModal" class="category-modal" onclick="closeCurrencyModal(event)">
+  <div class="category-content" onclick="event.stopPropagation()">
+    <div style="color: var(--cyan); font-size: 16px; font-weight: bold; margin-bottom: 12px; text-align: center;">اختر العملة</div>
+    <div style="background: #071418; border: 1px solid #006b72; border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+      <i class="fa-solid fa-magnifying-glass" style="color: var(--cyan); font-size: 14px;"></i>
+      <input type="text" id="currencySearchInput" placeholder="ابحث عن اسم العملة أو الرمز..." onkeyup="filterCurrencies()" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13px;" dir="rtl">
+    </div>
+    <div id="currenciesListContainer" style="overflow-y: auto; max-height: 55vh;"></div>
+  </div>
+</div>
+
+<div id="imageLightBox" onclick="closeLightBox()"><div class="close-btn" onclick="closeLightBox()"><i class="fa-solid fa-xmark"></i></div><img id="lightBoxImg" src="" alt="صورة مكبرة"></div>
+
+<div id="filterCategoryModal" class="category-modal" onclick="closeFilterCategoryModal(event)">
+  <div class="category-content" onclick="event.stopPropagation()">
+    <div class="category-option selected" onclick="selectFilterCategory('الكل', this)"><span>الكل</span><div class="radio-circle"></div></div>
+    <div class="category-option" onclick="selectFilterCategory('فري فاير', this)"><span>فري فاير</span><div class="radio-circle"></div></div>
+    <div class="category-option" onclick="selectFilterCategory('ببجي', this)"><span>ببجي</span><div class="radio-circle"></div></div>
+    <div class="category-option" onclick="selectFilterCategory('بيس فيفا و كلاش', this)"><span>بيس فيفا و كلاش</span><div class="radio-circle"></div></div>
+    <div class="category-option" onclick="selectFilterCategory('بلود سترايك', this)"><span>بلود سترايك</span><div class="radio-circle"></div></div>
+    <div class="category-option" onclick="selectFilterCategory('روبلوكس', this)"><span>روبلوكس</span><div class="radio-circle"></div></div>
+    <div class="category-option" onclick="selectFilterCategory('حسابات سوشيال ميديا', this)"><span>حسابات سوشيال ميديا</span><div class="radio-circle"></div></div>
+    <div class="category-option" onclick="selectFilterCategory('اخري', this)"><span>اخري</span><div class="radio-circle"></div></div>
+  </div>
+</div>
+
+<!-- زر الدعم العائم -->
+<div onclick="openSupportChat()" class="support">
+<i class="fa-solid fa-headset"></i> تواصل مع الدعم
+</div>
+
+<nav class="bottom-nav" id="bottomNav"></nav>
+
+<script>
+const logoBase64 = "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";
+
+let currentLogo = localStorage.getItem('site_logo') || ("data:image/webp;base64," + logoBase64);
+let currentStoreName = localStorage.getItem('site_store_name') || "متجر فرعون";
+
+document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
+document.getElementById('headerTitleText').innerText = currentStoreName;
+document.getElementById('heroTitleText').innerText = currentStoreName;
+
+const defaultChannels = [
+  { name: "قناه الشحن والمسابقات", type: "WHATSAPP", desc: "اشترك الآن لتصلك مسابقات الشحن والجوائز 🎁", icon: "fa-whatsapp", link: "https://whatsapp.com/channel/0029Vb5voqGDzgTKBoWyiu2S" },
+  { name: "قناه عرض الحسابات", type: "WHATSAPP", desc: "جروب بيع وشراء حسابات تبديل 🎮", icon: "fa-whatsapp", link: "https://whatsapp.com/channel/0029Vb7gMdt9mrGiOl9l8d1k" },
+  { name: "صفحه الفيس بوك", type: "FACEBOOK", desc: "الصفحة الرسمية لمتجر فرعون 👍", icon: "fa-facebook", link: "https://www.facebook.com/share/1BvevPu6fi/?mibextid=wwXIfr" },
+  { name: "اكونت التيك توك", type: "TIKTOK", desc: "تابع حساب التيكتوك 🎬", icon: "fa-tiktok", link: "https://www.tiktok.com/@fr3onshop1?_r=1&_t=ZS-9ATEknppa6u" },
+  { name: "FR3ON 1", type: "WHATSAPP", desc: "جروب بيع وشراء حسابات تبديل 🎮", icon: "fa-whatsapp", link: "https://chat.whatsapp.com/LmbdXYCt0PgKAUX54weJqP?mode=gi_t" },
+  { name: "FR3ON 2", type: "WHATSAPP", desc: "جروب بيع وشراء حسابات تبديل 🎮", icon: "fa-whatsapp", link: "https://chat.whatsapp.com/EFVrk44z4CB6Nyw0CV3741?mode=gi_t" },
+  { name: "FR3ON 3", type: "WHATSAPP", desc: "جروب بيع وشراء حسابات تبديل 🎮", icon: "fa-whatsapp", link: "https://chat.whatsapp.com/CGY2vGqaNCYE26OhHl2Nau?mode=gi_t" },
+  { name: "FR3ON 4", type: "WHATSAPP", desc: "جروب بيع وشراء حسابات تبديل 🎮", icon: "fa-whatsapp", link: "https://chat.whatsapp.com/KV41WS9BI6t6NblCPfL7LQ?mode=gi_t" }
+];
+
+const defaultPhones = [
+  { phone: "+201055159195", label: "اداره فرعون ١", link: "https://wa.me/201055159195" },
+  { phone: "+201096392091", label: "اداره فرعون ٢", link: "https://wa.me/201096392091" },
+  { phone: "+201080750276", label: "اداره فرعون ٣", link: "https://wa.me/201080750276" },
+  { phone: "+201287146772", label: "ادمن عرض حسابات", link: "https://wa.me/201287146772" }
+];
+
+const defaultTelegram = { username: "fr3on8", link: "https://t.me/fr3on8" };
+
+let siteChannels = JSON.parse(localStorage.getItem('site_channels') || JSON.stringify(defaultChannels));
+let sitePhones = JSON.parse(localStorage.getItem('site_phones') || JSON.stringify(defaultPhones));
+let siteTelegram = JSON.parse(localStorage.getItem('site_telegram') || JSON.stringify(defaultTelegram));
+
+let isLoggedIn = false;
+let loggedInEmail = "";
+let currentUser = { name: "زائر فرعون", email: "visitor@fr3on.com", phone: "+201000000000" };
+let selectedSingleImage = "";
+let activeCountryTarget = 'ad';
+let adminActiveChatKey = "";
+let currentActivePostIndex = null;
+
+const countriesList = [
+  { name: "مصر", code: "+20", flag: "🇪🇬" },
+  { name: "السعودية", code: "+966", flag: "🇸🇦" },
+  { name: "الإمارات", code: "+971", flag: "🇦🇪" },
+  { name: "العراق", code: "+964", flag: "🇮🇶" },
+  { name: "الكويت", code: "+965", flag: "🇰🇼" },
+  { name: "المغرب", code: "+212", flag: "🇲🇦" },
+  { name: "الجزائر", code: "+213", flag: "🇩🇿" },
+  { name: "الأردن", code: "+962", flag: "🇯🇴" },
+  { name: "فلسطين", code: "+970", flag: "🇵🇸" },
+  { name: "سوريا", code: "+963", flag: "🇸🇾" },
+  { name: "لبنان", code: "+961", flag: "🇱🇧" },
+  { name: "قطر", code: "+974", flag: "🇶🇦" },
+  { name: "البحرين", code: "+973", flag: "🇧🇭" },
+  { name: "عمان", code: "+968", flag: "🇴🇲" },
+  { name: "اليمن", code: "+967", flag: "🇾🇪" },
+  { name: "السودان", code: "+249", flag: "🇸🇩" },
+  { name: "ليبيا", code: "+218", flag: "🇱🇾" },
+  { name: "تونس", code: "+216", flag: "🇹🇳" },
+  { name: "الولايات المتحدة", code: "+1", flag: "🇺🇸" },
+  { name: "بريطانيا", code: "+44", flag: "🇬🇧" },
+  { name: "فرنسا", code: "+33", flag: "🇫🇷" },
+  { name: "ألمانيا", code: "+49", flag: "🇩🇪" },
+  { name: "تركيا", code: "+90", flag: "🇹🇷" },
+  { name: "إسبانيا", code: "+34", flag: "🇪🇸" },
+  { name: "إيطاليا", code: "+39", flag: "🇮🇹" },
+  { name: "روسيا", code: "+7", flag: "🇷🇺" },
+  { name: "الصين", code: "+86", flag: "🇨🇳" },
+  { name: "اليابان", code: "+81", flag: "🇯🇵" },
+  { name: "كوريا الجنوبية", code: "+82", flag: "🇰🇷" },
+  { name: "الهند", code: "+91", flag: "🇮🇳" },
+  { name: "البرازيل", code: "+55", flag: "🇧🇷" },
+  { name: "كندا", code: "+1", flag: "🇨🇦" },
+  { name: "أستراليا", code: "+61", flag: "🇦🇺" }
+];
+
+const currenciesList = [
+  { name: "جنيه مصري", symbol: "EGP" },
+  { name: "ريال سعودي", symbol: "SAR" },
+  { name: "درهم إماراتي", symbol: "AED" },
+  { name: "دولار أمريكي", symbol: "USD" },
+  { name: "دينار كويتي", symbol: "KWD" },
+  { name: "دينار أردني", symbol: "JOD" },
+  { name: "ريال قطري", symbol: "QAR" },
+  { name: "دينار بحريني", symbol: "BHD" },
+  { name: "ريال عماني", symbol: "OMR" },
+  { name: "دينار عراقي", symbol: "IQD" },
+  { name: "ليرة سورية", symbol: "SYP" },
+  { name: "ليرة لبنانية", symbol: "LBP" },
+  { name: "جنيه سوداني", symbol: "SDG" },
+  { name: "دينار ليبي", symbol: "LYD" },
+  { name: "دينار تونسي", symbol: "TND" },
+  { name: "درهم مغربي", symbol: "MAD" },
+  { name: "دينار جزائري", symbol: "DZD" },
+  { name: "يورو", symbol: "EUR" },
+  { name: "جنيه استرليني", symbol: "GBP" },
+  { name: "ليرة تركية", symbol: "TRY" },
+  { name: "ين ياباني", symbol: "JPY" },
+  { name: "يوان صيني", symbol: "CNY" },
+  { name: "روبية هندية", symbol: "INR" },
+  { name: "دولار كندي", symbol: "CAD" },
+  { name: "دولار أسترالي", symbol: "AUD" },
+  { name: "روبل روسي", symbol: "RUB" }
+];
+
+function openCountryModal(target) {
+  activeCountryTarget = target;
+  document.getElementById('countrySearchInput').value = '';
+  renderCountriesList(countriesList);
+  document.getElementById('countryModal').classList.add('show');
+}
+
+function renderCountriesList(list) {
+  const container = document.getElementById('countriesListContainer');
+  container.innerHTML = '';
+  list.forEach(c => {
+    container.innerHTML += `
+      <div class="category-option" onclick="selectCountry('${c.flag}', '${c.code}')">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 20px;">${c.flag}</span>
+          <span>${c.name}</span>
+        </div>
+        <span style="color: var(--cyan); direction: ltr;" dir="ltr">${c.code}</span>
+      </div>
+    `;
+  });
+}
+
+function filterCountries() {
+  const query = document.getElementById('countrySearchInput').value.toLowerCase();
+  const filtered = countriesList.filter(c => c.name.toLowerCase().includes(query) || c.code.toLowerCase().includes(query));
+  renderCountriesList(filtered);
+}
+
+function closeCountryModal(e) {
+  if (e.target.id === 'countryModal' || e.type === 'click') {
+    document.getElementById('countryModal').classList.remove('show');
+  }
+}
+
+function selectCountry(flag, code) {
+  if (activeCountryTarget === 'ad') {
+    document.getElementById('adFlag').innerText = flag;
+    document.getElementById('adCode').innerText = code;
+  } else if (activeCountryTarget === 'reg') {
+    document.getElementById('regFlag').innerText = flag;
+    document.getElementById('regCode').innerText = code;
+  }
+  document.getElementById('countryModal').classList.remove('show');
+}
+
+function openCurrencyModal() {
+  document.getElementById('currencySearchInput').value = '';
+  renderCurrenciesList(currenciesList);
+  document.getElementById('currencyModal').classList.add('show');
+}
+
+function renderCurrenciesList(list) {
+  const container = document.getElementById('currenciesListContainer');
+  container.innerHTML = '';
+  list.forEach(curr => {
+    container.innerHTML += `
+      <div class="category-option" onclick="selectCurrency('${curr.symbol}')">
+        <span>${curr.name}</span>
+        <span style="color: var(--cyan); font-weight: bold;">${curr.symbol}</span>
+      </div>
+    `;
+  });
+}
+
+function filterCurrencies() {
+  const query = document.getElementById('currencySearchInput').value.toLowerCase();
+  const filtered = currenciesList.filter(curr => curr.name.toLowerCase().includes(query) || curr.symbol.toLowerCase().includes(query));
+  renderCurrenciesList(filtered);
+}
+
+function closeCurrencyModal(e) {
+  if (e.target.id === 'currencyModal' || e.type === 'click') {
+    document.getElementById('currencyModal').classList.remove('show');
+  }
+}
+
+function selectCurrency(symbol) {
+  document.getElementById('selectedCurrencyText').innerText = symbol;
+  document.getElementById('currencyModal').classList.remove('show');
+}
+
+function setRegMethod(method) {
+  const tabEmail = document.getElementById('regTabEmail');
+  const tabPhone = document.getElementById('regTabPhone');
+  const container = document.getElementById('regIdentifierContainer');
+  const phoneContainer = document.getElementById('regPhoneContainer');
+
+  if(method === 'email') {
+    tabEmail.style.background = '#00252b';
+    tabEmail.style.color = 'var(--cyan)';
+    tabEmail.style.border = '1px solid rgba(0,245,247,0.3)';
+    tabPhone.style.background = 'transparent';
+    tabPhone.style.color = '#8b949e';
+    tabPhone.style.border = '0';
+    
+    container.style.display = 'block';
+    phoneContainer.style.display = 'none';
+    container.innerHTML = `
+      <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+        <input type="text" id="regEmailInput" placeholder="البريد الإلكتروني" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="rtl">
+        <i class="fa-regular fa-envelope" style="color: #8b949e; font-size: 16px;"></i>
+      </div>
+    `;
+  } else {
+    tabPhone.style.background = '#00252b';
+    tabPhone.style.color = 'var(--cyan)';
+    tabPhone.style.border = '1px solid rgba(0,245,247,0.3)';
+    tabEmail.style.background = 'transparent';
+    tabEmail.style.color = '#8b949e';
+    tabEmail.style.border = '0';
+
+    container.style.display = 'none';
+    phoneContainer.style.display = 'block';
+  }
+}
+
+function toggleRegPassword() {
+  const passInput = document.getElementById('regPasswordInput');
+  const eyeIcon = document.getElementById('regEyeIcon');
+  if (passInput.type === 'password') {
+    passInput.type = 'text';
+    eyeIcon.className = 'fa-regular fa-eye';
+  } else {
+    passInput.type = 'password';
+    eyeIcon.className = 'fa-regular fa-eye-slash';
+  }
+}
+
+function renderHomePageDynamicElements() {
+  const channelsContainer = document.getElementById('dynamicChannelsContainer');
+  if(channelsContainer) {
+    channelsContainer.innerHTML = '';
+    siteChannels.forEach(ch => {
+      channelsContainer.innerHTML += `
+        <div style="background: #090c10; border: 1px solid #1c2634; border-radius: 20px; padding: 18px 20px; margin: 0 auto 15px auto; max-width: 92%; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);">
+          <table style="width: 100%; border-collapse: collapse;" dir="rtl">
+            <tr>
+              <td style="text-align: right; vertical-align: middle;">
+                <div style="display: flex; align-items: center; gap: 12px; justify-content: flex-start;">
+                  <div style="width: 48px; height: 48px; background: #0b1f24; border: 1px solid rgba(0, 245, 247, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #00f5f7; font-size: 20px; flex-shrink: 0;"><i class="fa-brands ${ch.icon || 'fa-whatsapp'}"></i></div>
+                  <div>
+                    <h4 style="color: #ffffff; font-size: 16px; font-weight: bold; margin: 0 0 4px 0;">${ch.name}</h4>
+                    <p style="color: #8b949e; font-size: 11px; margin: 0 0 4px 0;" dir="ltr">${ch.type}</p>
+                    <p style="color: #7b8396; font-size: 12px; margin: 0;">${ch.desc}</p>
+                  </div>
+                </div>
+              </td>
+              <td style="text-align: left; vertical-align: middle; width: 110px;">
+                <a href="${ch.link}" target="_blank" style="display: inline-block; background: transparent; color: #ffffff; font-size: 13px; font-weight: 500; padding: 8px 18px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.25); text-decoration: none; text-align: center; white-space: nowrap;">افتح الرابط</a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      `;
+    });
+  }
+
+  const phonesContainer = document.getElementById('dynamicPhonesContainer');
+  if(phonesContainer) {
+    phonesContainer.innerHTML = '';
+    sitePhones.forEach(p => {
+      phonesContainer.innerHTML += `
+        <a href="${p.link}" target="_blank" style="background: #090c10; border: 1px solid #1c2634; border-radius: 18px; padding: 18px 12px; text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div style="width: 42px; height: 42px; background: #0b1f24; border: 1px solid rgba(0, 245, 247, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #00f5f7; font-size: 18px; margin-bottom: 10px;"><i class="fa-brands fa-whatsapp"></i></div>
+          <span style="color: #ffffff; font-size: 14px; font-weight: bold; margin-bottom: 4px; direction: ltr;" dir="ltr">${p.phone}</span>
+          <span style="color: #8b949e; font-size: 11px;">${p.label}</span>
+        </a>
+      `;
+    });
+  }
+
+  const telegramContainer = document.getElementById('dynamicTelegramContainer');
+  if(telegramContainer) {
+    telegramContainer.innerHTML = `
+      <a href="${siteTelegram.link}" target="_blank" style="background: #090c10; border: 1px solid #1c2634; border-radius: 18px; padding: 20px; text-decoration: none; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <div style="width: 42px; height: 42px; background: #0b1f24; border: 1px solid rgba(0, 245, 247, 0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #00f5f7; font-size: 18px; margin-bottom: 10px;"><i class="fa-brands fa-telegram"></i></div>
+        <span style="color: #ffffff; font-size: 15px; font-weight: bold; margin-bottom: 4px; direction: ltr;" dir="ltr">${siteTelegram.username}</span>
+        <span style="color: #8b949e; font-size: 11px;">إدارة فرعون</span>
+      </a>
+    `;
+  }
+}
+renderHomePageDynamicElements();
+
+function renderNav() {
+  const nav = document.getElementById('bottomNav');
+  const homeAddBtn = document.getElementById('homeAddAdBtn');
+
+  if (!isLoggedIn) {
+    if(homeAddBtn) homeAddBtn.style.display = 'none';
+    nav.innerHTML = `
+      <a href="#" class="nav-item active" id="navHome" onclick="switchPage('homePage', event); updateNav(this);"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a>
+      <a href="#" class="nav-item" id="navPosts" onclick="switchPage('postsPage', event); updateNav(this); loadAllPosts();"><i class="fa-solid fa-list-ul"></i><span>المنشورات</span></a>
+      <a href="#" class="nav-item" id="navChannel" onclick="switchPage('adminChannelPage', event); updateNav(this); loadChannelPosts();"><i class="fa-solid fa-bullhorn"></i><span>قناة فرعون</span></a>
+      <a href="#" class="nav-item" id="navLogin" onclick="switchPage('loginPage', event); updateNav(this);"><i class="fa-solid fa-right-to-bracket"></i><span>دخول</span></a>
+      <a href="#" class="nav-item" id="navRegister" onclick="switchPage('registerPage', event); updateNav(this);"><i class="fa-solid fa-user-plus"></i><span>حساب جديد</span></a>
+    `;
+  } else if (loggedInEmail === "konbela.ff.30@gmail.com") {
+    if(homeAddBtn) homeAddBtn.style.display = 'flex';
+    nav.innerHTML = `
+      <a href="#" class="nav-item active" id="navHome" onclick="switchPage('homePage', event); updateNav(this);"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a>
+      <a href="#" class="nav-item" id="navPosts" onclick="switchPage('postsPage', event); updateNav(this); loadAllPosts();"><i class="fa-solid fa-list-ul"></i><span>المنشورات</span></a>
+      <a href="#" class="nav-item" id="navChannel" onclick="switchPage('adminChannelPage', event); updateNav(this); loadChannelPosts();"><i class="fa-solid fa-bullhorn"></i><span>قناة فرعون</span></a>
+      <a href="#" class="nav-item" id="navAddAd" onclick="switchPage('addAdPage', event); updateNav(this);"><i class="fa-solid fa-plus-circle"></i><span>أضف إعلان</span></a>
+      <a href="#" class="nav-item" id="navMessages" onclick="switchPage('messagesPage', event); updateNav(this); loadAdminMessagesRequests();"><i class="fa-solid fa-comment"></i><span>الرسائل</span><span class="badge-dot" id="messagesBadgeDot"></span></a>
+      <a href="#" class="nav-item" id="navProfile" onclick="switchPage('profilePage', event); updateNav(this); updateProfileDisplay();"><i class="fa-solid fa-user"></i><span>حسابي</span></a>
+      <a href="#" class="nav-item" id="navLogoutBtn" onclick="logout(); event.preventDefault();" style="color: #ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i><span>خروج</span></a>
+    `;
+  } else {
+    if(homeAddBtn) homeAddBtn.style.display = 'flex';
+    nav.innerHTML = `
+      <a href="#" class="nav-item active" id="navHome" onclick="switchPage('homePage', event); updateNav(this);"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a>
+      <a href="#" class="nav-item" id="navPosts" onclick="switchPage('postsPage', event); updateNav(this); loadAllPosts();"><i class="fa-solid fa-list-ul"></i><span>المنشورات</span></a>
+      <a href="#" class="nav-item" id="navChannel" onclick="switchPage('adminChannelPage', event); updateNav(this); loadChannelPosts();"><i class="fa-solid fa-bullhorn"></i><span>قناة فرعون</span></a>
+      <a href="#" class="nav-item" id="navAddAd" onclick="switchPage('addAdPage', event); updateNav(this);"><i class="fa-solid fa-plus-circle"></i><span>أضف إعلان</span></a>
+      <a href="#" class="nav-item" id="navMessages" onclick="switchPage('messagesPage', event); updateNav(this); loadAdminMessagesRequests();"><i class="fa-solid fa-comment"></i><span>الرسائل</span></a>
+      <a href="#" class="nav-item" id="navProfile" onclick="switchPage('profilePage', event); updateNav(this); updateProfileDisplay();"><i class="fa-solid fa-user"></i><span>حسابي</span></a>
+      <a href="#" class="nav-item" id="navLogoutBtn" onclick="logout(); event.preventDefault();" style="color: #ff4d4d;"><i class="fa-solid fa-right-from-bracket"></i><span>خروج</span></a>
+    `;
+  }
+}
+renderNav();
+
+function getTargetChatKey() {
+  if (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) {
+    return adminActiveChatKey;
+  }
+  let identifier = isLoggedIn ? loggedInEmail : ("visitor_" + (localStorage.getItem('fr3on_visitor_id') || Math.random().toString(36).substring(7)));
+  if(!localStorage.getItem('fr3on_visitor_id')) {
+    localStorage.setItem('fr3on_visitor_id', identifier);
+  }
+  return 'fr3on_chat_' + identifier;
+}
+
+function openSupportChat(chatKey = null) {
+  const modal = document.getElementById('supportChatModal');
+  modal.style.display = 'flex';
+
+  if (loggedInEmail === "konbela.ff.30@gmail.com" && chatKey) {
+    adminActiveChatKey = chatKey;
+    let userName = chatKey.replace('fr3on_chat_', '');
+    document.getElementById('chatHeaderTitle').innerText = "محادثة مع: " + userName;
+  } else {
+    adminActiveChatKey = "";
+    document.getElementById('chatHeaderTitle').innerText = "إدارة فرعون (الدعم المباشر)";
+  }
+  loadChatMessages();
+}
+
+function closeSupportChat() {
+  document.getElementById('supportChatModal').style.display = 'none';
+  adminActiveChatKey = "";
+  loadAdminMessagesRequests();
+}
+
+function loadChatMessages() {
+  const container = document.getElementById('chatMessagesContainer');
+  let chatKey = getTargetChatKey();
+
+  let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
+  if(messages.length === 0 && (!loggedInEmail || loggedInEmail !== "konbela.ff.30@gmail.com")) {
+    messages = [
+      { sender: 'admin', text: 'أهلاً بك في متجر فرعون! كيف يمكننا مساعدتك اليوم؟', time: new Date().toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'}), type: 'text' }
+    ];
+    localStorage.setItem(chatKey, JSON.stringify(messages));
+  }
+
+  container.innerHTML = '';
+  messages.forEach((msg, index) => {
+    let isMe = (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) ? (msg.sender === 'admin') : (msg.sender === 'user');
+    
+    let bubbleBg = isMe ? '#032123' : '#161b22';
+    let alignSide = isMe ? 'flex-end' : 'flex-start';
+    let radiusStyle = isMe ? '16px 16px 16px 0' : '16px 16px 0 16px';
+
+    let contentHtml = msg.isDeleted ? 
+      `<div style="color: #8b949e; font-style: italic; font-size: 13px;"><i class="fa-solid fa-ban"></i> تم حذف هذه الرسالة</div>` : 
+      (msg.type === 'img' ? `<img src="${msg.text}" style="max-width:100%; border-radius:10px; margin-bottom:5px;">` : msg.text);
+
+    let reactionBadge = msg.reaction ? `<div style="position: absolute; bottom: -10px; ${isMe ? 'right' : 'left'}: 10px; background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 2px 6px; font-size: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.5);">${msg.reaction}</div>` : '';
+
+    container.innerHTML += `
+      <div style="display: flex; flex-direction: column; align-items: ${alignSide}; max-width: 80%; align-self: ${alignSide}; position: relative; margin-bottom: 10px;">
+        <div onclick="toggleMessageMenu(event, ${index})" style="background: ${bubbleBg}; border: 1px solid #008e95; border-radius: ${radiusStyle}; padding: 12px 16px; color: #fff; font-size: 13.5px; line-height: 1.5; word-break: break-all; cursor: pointer; position: relative;">
+          ${contentHtml}
+          ${reactionBadge}
+        </div>
+        <div style="color: #8b949e; font-size: 10px; margin-top: 4px;">${msg.time}</div>
+      </div>
+    `;
+  });
+  container.scrollTop = container.scrollHeight;
+}
+
+function toggleMessageMenu(event, index) {
+  event.stopPropagation();
+  let existingMenu = document.getElementById('chatMsgActionMenu');
+  if(existingMenu) existingMenu.remove();
+
+  let menu = document.createElement('div');
+  menu.id = 'chatMsgActionMenu';
+  menu.style.cssText = "position: absolute; background: #0b1018; border: 1px solid #008e95; border-radius: 30px; padding: 6px 12px; display: flex; gap: 12px; align-items: center; z-index: 6000; box-shadow: 0 4px 20px rgba(0,0,0,0.8); font-size: 18px;";
+  
+  menu.innerHTML = `
+    <span onclick="setMsgReaction(${index}, '❤️')" style="cursor: pointer;">❤️</span>
+    <span onclick="setMsgReaction(${index}, '🔥')" style="cursor: pointer;">🔥</span>
+    <span onclick="setMsgReaction(${index}, '👍')" style="cursor: pointer;">👍</span>
+    <span onclick="setMsgReaction(${index}, '😂')" style="cursor: pointer;">😂</span>
+    <span onclick="setMsgReaction(${index}, '😮')" style="cursor: pointer;">😮</span>
+    <span onclick="deleteChatMessage(${index})" style="color: #ff4d4d; font-size: 14px; cursor: pointer; margin-right: 5px;" title="حذف"><i class="fa-solid fa-trash"></i></span>
+  `;
+
+  let rect = event.currentTarget.getBoundingClientRect();
+  document.body.appendChild(menu);
+  menu.style.top = (rect.top - 50) + 'px';
+  menu.style.left = Math.max(10, rect.left) + 'px';
+
+  document.addEventListener('click', function removeMenu() {
+    menu.remove();
+    document.removeEventListener('click', removeMenu);
+  }, { once: true });
+}
+
+function setMsgReaction(index, emoji) {
+  let chatKey = getTargetChatKey();
+  let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
+  messages[index].reaction = emoji;
+  localStorage.setItem(chatKey, JSON.stringify(messages));
+  loadChatMessages();
+}
+
+function deleteChatMessage(index) {
+  let chatKey = getTargetChatKey();
+  let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
+  messages[index].isDeleted = true;
+  messages[index].text = "تم حذف هذه الرسالة";
+  messages[index].reaction = "";
+  localStorage.setItem(chatKey, JSON.stringify(messages));
+  loadChatMessages();
+}
+
+function sendUserChatMessage() {
+  const input = document.getElementById('chatInputText');
+  const text = input.value.trim();
+  if(!text) return;
+
+  let chatKey = getTargetChatKey();
+  let senderRole = (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) ? 'admin' : 'user';
+
+  let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
+  messages.push({ sender: senderRole, text: text, time: new Date().toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'}), type: 'text', reaction: '', isDeleted: false });
+  localStorage.setItem(chatKey, JSON.stringify(messages));
+  
+  let activeChatsList = JSON.parse(localStorage.getItem('fr3on_active_chats_list') || '[]');
+  if(!activeChatsList.includes(chatKey)) {
+    activeChatsList.push(chatKey);
+    localStorage.setItem('fr3on_active_chats_list', JSON.stringify(activeChatsList));
+  }
+
+  input.value = '';
+  loadChatMessages();
+}
+
+function checkChatEnter(e) {
+  if(e.key === 'Enter') { sendUserChatMessage(); }
+}
+
+function sendChatImage(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      let chatKey = getTargetChatKey();
+      let senderRole = (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) ? 'admin' : 'user';
+
+      let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
+      messages.push({ sender: senderRole, text: e.target.result, time: new Date().toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'}), type: 'img', reaction: '', isDeleted: false });
+      localStorage.setItem(chatKey, JSON.stringify(messages));
+      
+      let activeChatsList = JSON.parse(localStorage.getItem('fr3on_active_chats_list') || '[]');
+      if(!activeChatsList.includes(chatKey)) {
+        activeChatsList.push(chatKey);
+        localStorage.setItem('fr3on_active_chats_list', JSON.stringify(activeChatsList));
+      }
+      loadChatMessages();
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function loginSuccess() {
+  loggedInEmail = document.getElementById('loginEmailInput').value.trim() || "konbela.ff.30@gmail.com";
+  isLoggedIn = true;
+  currentUser.email = loggedInEmail;
+  currentUser.name = (loggedInEmail === "konbela.ff.30@gmail.com") ? "إدارة فرعون" : loggedInEmail.split('@')[0];
+  renderNav();
+  updateProfileDisplay();
+  switchPage('homePage');
+}
+
+function registerSuccess() {
+  currentUser.name = document.getElementById('regNameInput').value.trim() || "مستخدم";
+  let emailField = document.getElementById('regEmailInput');
+  loggedInEmail = emailField ? (emailField.value.trim() || "user@fr3on.com") : "user@fr3on.com";
+  currentUser.email = loggedInEmail;
+  isLoggedIn = true;
+  renderNav();
+  updateProfileDisplay();
+  switchPage('homePage');
+}
+
+function logout() {
+  isLoggedIn = false;
+  loggedInEmail = "";
+  currentUser = { name: "زائر فرعون", email: "visitor@fr3on.com", phone: "+201000000000" };
+  renderNav();
+  switchPage('homePage');
+}
+
+function updateProfileDisplay() {
+  document.getElementById('profileUserName').innerText = currentUser.name;
+  document.getElementById('profileUserEmail').innerText = currentUser.email;
+  const masterPanel = document.getElementById('masterAdminPanel');
+  const adminPostForm = document.getElementById('adminPostFormContainer');
+  
+  if (loggedInEmail === "konbela.ff.30@gmail.com") {
+    if (masterPanel) masterPanel.style.display = "block";
+    if (adminPostForm) adminPostForm.style.display = "block";
+    renderAdminEditors();
+  } else {
+    if (masterPanel) masterPanel.style.display = "none";
+    if (adminPostForm) adminPostForm.style.display = "none";
+  }
+}
+
+function renderAdminEditors() {
+  document.getElementById('adminStoreNameInput').value = currentStoreName;
+  const channelsEd = document.getElementById('adminChannelsEditorContainer');
+  channelsEd.innerHTML = '';
+  siteChannels.forEach((ch, idx) => {
+    channelsEd.innerHTML += `
+      <div style="background: #02090c; border: 1px solid #006b72; border-radius: 12px; padding: 10px; display: flex; gap: 8px;">
+        <input type="text" id="chName_${idx}" value="${ch.name}" style="flex-grow:1; background:#071418; border:1px solid #1c2634; border-radius:8px; padding:6px; color:#fff; font-size:11px;">
+        <input type="text" id="chLink_${idx}" value="${ch.link}" style="flex-grow:1; background:#071418; border:1px solid #1c2634; border-radius:8px; padding:6px; color:#fff; font-size:11px;" dir="ltr">
+        <button onclick="removeChannelItem(${idx})" style="background:#ff4d4d; color:#fff; border:0; border-radius:6px; padding:4px 8px; font-size:10px; cursor:pointer;">حذف</button>
+      </div>
+    `;
+  });
+}
+
+function handleAdminLogoPick(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      let img = new Image();
+      img.src = e.target.result;
+      img.onload = function() {
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext('2d');
+        let MAX_WIDTH = 400;
+        let MAX_HEIGHT = 400;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        currentLogo = canvas.toDataURL('image/jpeg', 0.6);
+        localStorage.setItem('site_logo', currentLogo);
+        document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
+        alert("تم تغيير صورة المتجر بنجاح! 🚀");
+      };
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function saveStoreIdentity() {
+  if (loggedInEmail !== "konbela.ff.30@gmail.com") return;
+  currentStoreName = document.getElementById('adminStoreNameInput').value.trim() || currentStoreName;
+  localStorage.setItem('site_store_name', currentStoreName);
+  document.getElementById('headerTitleText').innerText = currentStoreName;
+  document.getElementById('heroTitleText').innerText = currentStoreName;
+  alert("تم الحفظ بنجاح!");
+}
+
+function addNewChannelItem() {
+  siteChannels.push({ name: "قناة جديدة", type: "WHATSAPP", desc: "وصف", icon: "fa-whatsapp", link: "https://whatsapp.com" });
+  renderAdminEditors();
+}
+function removeChannelItem(idx) {
+  siteChannels.splice(idx, 1);
+  renderAdminEditors();
+}
+function saveChannelsChanges() {
+  if (loggedInEmail !== "konbela.ff.30@gmail.com") return;
+  siteChannels = siteChannels.map((ch, idx) => ({
+    ...ch,
+    name: document.getElementById(`chName_${idx}`).value.trim() || ch.name,
+    link: document.getElementById(`chLink_${idx}`).value.trim() || ch.link
+  }));
+  localStorage.setItem('site_channels', JSON.stringify(siteChannels));
+  renderHomePageDynamicElements();
+  alert("تم حفظ القنوات!");
+}
+
+function switchPage(pageId, event) {
+  if (event) event.preventDefault();
+  if (pageId === 'addAdPage' && !isLoggedIn) { switchPage('loginPage'); return; }
+  document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-page'));
+  document.getElementById(pageId).classList.add('active-page');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  
+  if(pageId === 'postsPage') loadAllPosts();
+  else if(pageId === 'messagesPage') loadAdminMessagesRequests();
+  else if(pageId === 'adminChannelPage') loadChannelPosts();
+}
+
+function updateNav(element) {
+  document.querySelectorAll('.bottom-nav .nav-item').forEach(item => item.classList.remove('active'));
+  element.classList.add('active');
+}
+function updateNavById(id) {
+  document.querySelectorAll('.bottom-nav .nav-item').forEach(item => item.classList.remove('active'));
+  const t = document.getElementById(id); if(t) t.classList.add('active');
+}
+
+function loadAdminMessagesRequests() {
+  const adminSection = document.getElementById('messagesAdminSection');
+  const chatsListSection = document.getElementById('adminChatsListSection');
+  const normalBox = document.getElementById('normalUserMessagesBox');
+  const container = document.getElementById('adminPendingRequestsContainer');
+  const chatsContainer = document.getElementById('adminCustomerChatsContainer');
+
+  if (loggedInEmail === "konbela.ff.30@gmail.com") {
+    adminSection.style.display = 'block';
+    chatsListSection.style.display = 'block';
+    normalBox.style.display = 'none';
+
+    let pendingPosts = JSON.parse(localStorage.getItem('fr3on_pending_posts') || '[]');
+    if(pendingPosts.length === 0) {
+      container.innerHTML = '<p style="color: #8b949e; font-size: 12px; text-align: center;">لا توجد طلبات إعلانات معلقة.</p>';
+    } else {
+      container.innerHTML = '';
+      pendingPosts.forEach((post, index) => {
+        container.innerHTML += `
+          <div style="background: #0b1018; border: 1px solid #1c2634; border-radius: 14px; padding: 14px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+            <div style="overflow: hidden; flex-grow: 1;">
+              <div style="font-weight: bold; font-size: 14px; color: #fff; margin-bottom: 3px;">الناشر: ${post.author}</div>
+              <p style="color: #8b949e; font-size: 12px; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${post.desc}</p>
+            </div>
+            <div style="display: flex; gap: 6px; flex-shrink: 0;">
+              <button onclick="approvePost(${index})" style="background: var(--cyan); color: #000; border: 0; border-radius: 8px; padding: 6px 12px; font-weight: bold; cursor: pointer; font-size: 12px;">موافقة ✅</button>
+              <button onclick="rejectPost(${index})" style="background: #ff4d4d; color: #fff; border: 0; border-radius: 8px; padding: 6px 12px; font-weight: bold; cursor: pointer; font-size: 12px;">رفض ❌</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    let activeChats = JSON.parse(localStorage.getItem('fr3on_active_chats_list') || '[]');
+    if(activeChats.length === 0) {
+      chatsContainer.innerHTML = '<p style="color: #8b949e; font-size: 12px; text-align: center;">لا توجد محادثات عملاء حالياً.</p>';
+    } else {
+      chatsContainer.innerHTML = '';
+      activeChats.forEach(chatKey => {
+        let chatMessages = JSON.parse(localStorage.getItem(chatKey) || '[]');
+        let lastMsg = chatMessages.length > 0 ? chatMessages[chatMessages.length - 1] : { text: 'لا توجد رسائل', time: '' };
+        let userName = chatKey.replace('fr3on_chat_', '');
+
+        chatsContainer.innerHTML += `
+          <div onclick="openSupportChat('${chatKey}')" style="background: #071418; border: 1px solid #006b72; border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; gap: 12px; flex-grow: 1;">
+              <div style="width: 40px; height: 40px; background: #0b1f24; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--cyan); flex-shrink: 0;"><i class="fa-solid fa-user"></i></div>
+              <div style="overflow: hidden;">
+                <div style="color: #fff; font-size: 14px; font-weight: bold; margin-bottom: 3px;">${userName}</div>
+                <div style="color: #8b949e; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px;">${lastMsg.type === 'img' ? '📷 [صورة مرسلة]' : lastMsg.text}</div>
+              </div>
+            </div>
+            <div style="text-align: left; flex-shrink: 0;">
+              <span style="color: var(--cyan); font-size: 11px; font-weight: bold; display: block; margin-bottom: 2px;">فتح الشات 💬</span>
+              <span style="color: #8b949e; font-size: 10px;">${lastMsg.time}</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+  } else {
+    adminSection.style.display = 'none';
+    chatsListSection.style.display = 'none';
+    normalBox.style.display = 'block';
+  }
+}
+
+function approvePost(index) {
+  let pendingPosts = JSON.parse(localStorage.getItem('fr3on_pending_posts') || '[]');
+  let savedPosts = JSON.parse(localStorage.getItem('fr3on_all_posts') || '[]');
+  let approved = pendingPosts.splice(index, 1)[0];
+  savedPosts.unshift(approved);
+  localStorage.setItem('fr3on_pending_posts', JSON.stringify(pendingPosts));
+  localStorage.setItem('fr3on_all_posts', JSON.stringify(savedPosts));
+  loadAdminMessagesRequests();
+}
+
+function rejectPost(index) {
+  let pendingPosts = JSON.parse(localStorage.getItem('fr3on_pending_posts') || '[]');
+  pendingPosts.splice(index, 1);
+  localStorage.setItem('fr3on_pending_posts', JSON.stringify(pendingPosts));
+  loadAdminMessagesRequests();
+}
+
+function loadChannelPosts() {
+  const container = document.getElementById('channelPostsContainer');
+  if(!container) return;
+  let channelPosts = JSON.parse(localStorage.getItem('fr3on_channel_posts') || '[]');
+  container.innerHTML = channelPosts.length === 0 ? '<p style="color:#8b949e; text-align:center;">لا توجد منشورات.</p>' : '';
+  
+  channelPosts.forEach((post, index) => {
+    let imgHtml = post.img ? `<img src="${post.img}" onclick="openLightBox('${post.img}')" style="width: 100%; max-height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; cursor: pointer; border: 1px solid #1c2634;">` : '';
+    let commentsArr = post.comments || [];
+    let likesCount = post.likes || 0;
+    let isLiked = post.isLiked || false;
+
+    container.innerHTML += `
+      <div style="background: #090c10; border: 1px solid #1c2634; border-radius: 24px; padding: 22px; margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.6);" id="channelPost_${index}">
+        
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #161b22; padding-bottom: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 45px; height: 45px; border-radius: 12px; overflow: hidden; border: 1px solid var(--cyan);">
+              <img class="fr3on-logo" style="width:100%; height:100%; object-fit:cover;" alt="Admin">
+            </div>
+            <div>
+              <div style="display: flex; align-items: center; gap: 5px;">
+                <span style="color: #fff; font-size: 15px; font-weight: bold;">الإدارة</span>
+                <span style="color: var(--cyan); font-size: 13px;"><i class="fa-solid fa-circle-check"></i></span>
+              </div>
+              <span style="color: #8b949e; font-size: 11px;">٩ أكتوبر ٢٠٢٦، ١:٣٧ م</span>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="color:#fff; font-size:17px; font-weight: bold; margin-bottom:10px;">${post.title}</h3>
+        <p style="color:#c9d1d9; font-size:13.5px; line-height: 1.7; margin-bottom: 15px;">${post.desc}</p>
+        ${imgHtml}
+
+        <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #161b22; padding-top: 15px; margin-top: 15px;">
+          <button onclick="shareChannelPost(${index})" style="background: #161b22; color: #8b949e; border: 1px solid #30363d; border-radius: 16px; padding: 8px 16px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+            <i class="fa-solid fa-share"></i>
+          </button>
+          
+          <button onclick="openCommentsModal(${index})" style="background: #161b22; color: #fff; border: 1px solid #30363d; border-radius: 16px; padding: 8px 18px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px; font-weight: bold;">
+            <i class="fa-regular fa-comment" style="color: var(--cyan);"></i>
+            <span>${commentsArr.length} التعليقات</span>
+          </button>
+
+          <button onclick="toggleLikePost(${index})" style="background: #161b22; color: ${isLiked ? '#ff4d4d' : '#8b949e'}; border: 1px solid #30363d; border-radius: 16px; padding: 8px 16px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+            <i class="${isLiked ? 'fa-solid fa-thumbs-up' : 'fa-regular fa-thumbs-up'}"></i>
+            <span>${likesCount > 0 ? likesCount : ''}</span>
+          </button>
+        </div>
+
+      </div>
+    `;
+  });
+  document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
+}
+
+function toggleLikePost(index) {
+  let channelPosts = JSON.parse(localStorage.getItem('fr3on_channel_posts') || '[]');
+  let post = channelPosts[index];
+  if(post.isLiked) {
+    post.isLiked = false;
+    post.likes = Math.max(0, (post.likes || 1) - 1);
+  } else {
+    post.isLiked = true;
+    post.likes = (post.likes || 0) + 1;
+  }
+  localStorage.setItem('fr3on_channel_posts', JSON.stringify(channelPosts));
+  loadChannelPosts();
+}
+
+function shareChannelPost(index) {
+  let postUrl = window.location.href.split('?')[0] + '?postId=' + index;
+  if(navigator.clipboard) {
+    navigator.clipboard.writeText(postUrl).then(() => {
+      alert("تم نسخ رابط المنشور بنجاح! 📋");
+    });
+  } else {
+    prompt("انسخ الرابط:", postUrl);
+  }
+}
+
+function openCommentsModal(index) {
+  currentActivePostIndex = index;
+  const modal = document.getElementById('commentsModal');
+  modal.style.display = 'flex';
+  loadPostComments();
+}
+
+function closeCommentsModal() {
+  document.getElementById('commentsModal').style.display = 'none';
+  currentActivePostIndex = null;
+}
+
+function loadPostComments() {
+  if (currentActivePostIndex === null) return;
+  let channelPosts = JSON.parse(localStorage.getItem('fr3on_channel_posts') || '[]');
+  let post = channelPosts[currentActivePostIndex];
+  let comments = post.comments || [];
+
+  document.getElementById('commentsCountBadge').innerText = comments.length;
+  const container = document.getElementById('commentsListContainer');
+  container.innerHTML = comments.length === 0 ? '<p style="color: #8b949e; font-size: 13px; text-align: center; margin-top: 20px;">لا توجد تعليقات بعد. كن أول من يعلق!</p>' : '';
+
+  comments.forEach(c => {
+    container.innerHTML += `
+      <div style="background: #161b22; border: 1px solid #30363d; border-radius: 14px; padding: 12px 14px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+          <span style="color: var(--cyan); font-size: 13.5px; font-weight: bold;">${c.author}</span>
+          <span style="color: #8b949e; font-size: 10.5px;">${c.time}</span>
+        </div>
+        <p style="color: #fff; font-size: 13px; line-height: 1.5; margin: 0;">${c.text}</p>
+      </div>
+    `;
+  });
+  container.scrollTop = container.scrollHeight;
+}
+
+function submitNewComment() {
+  const input = document.getElementById('newCommentInput');
+  const text = input.value.trim();
+  if(!text || currentActivePostIndex === null) return;
+
+  let channelPosts = JSON.parse(localStorage.getItem('fr3on_channel_posts') || '[]');
+  if(!channelPosts[currentActivePostIndex].comments) {
+    channelPosts[currentActivePostIndex].comments = [];
+  }
+
+  channelPosts[currentActivePostIndex].comments.push({
+    author: currentUser.name || 'زائر',
+    text: text,
+    time: new Date().toLocaleDateString('ar-EG') + '، ' + new Date().toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'})
+  });
+
+  localStorage.setItem('fr3on_channel_posts', JSON.stringify(channelPosts));
+  input.value = '';
+  loadPostComments();
+  loadChannelPosts();
+}
+
+function checkCommentEnter(e) {
+  if(e.key === 'Enter') { submitNewComment(); }
+}
+
+function loadAllPosts() {
+  const container = document.getElementById('allPostsContainer');
+  let savedPosts = JSON.parse(localStorage.getItem('fr3on_all_posts') || '[]');
+  let currentCategory = document.getElementById('filterSelectedCategoryText').innerText;
+  
+  if(currentCategory && currentCategory !== 'الكل') {
+    savedPosts = savedPosts.filter(p => p.category === currentCategory);
+  }
+
+  container.innerHTML = savedPosts.length === 0 ? '<p style="color:#8b949e; text-align:center;">لا توجد منشورات في هذا القسم.</p>' : '';
+  savedPosts.forEach(post => {
+    let imgHtml = post.img ? `<img src="${post.img}" onclick="openLightBox('${post.img}')" style="width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; cursor: pointer;">` : '';
+    container.innerHTML += `
+      <div style="background: #090c10; border: 1px solid #1c2634; border-radius: 20px; padding: 20px; margin-bottom: 15px;">
+        ${imgHtml}
+        <h3 style="color:#fff; font-size:16px; margin-bottom:8px;">${post.title}</h3>
+        <p style="color:var(--cyan); font-weight:bold; margin-bottom:8px;">${post.price}</p>
+        <p style="color:#8b949e; font-size:13px;">${post.desc}</p>
+      </div>
+    `;
+  });
+}
+
+function submitUserAd() {
+  let currencySymbol = document.getElementById('selectedCurrencyText').innerText;
+  let newPost = {
+    title: 'إعلان جديد',
+    category: document.getElementById('userAdCategory').value || 'اخري',
+    price: document.getElementById('userAdPrice').value + ' ' + currencySymbol,
+    desc: document.getElementById('userAdDesc').value || 'بدون وصف',
+    img: selectedSingleImage,
+    author: currentUser.name,
+    authorEmail: currentUser.email,
+    date: '16 أكتوبر ٢٠٢٦'
+  };
+  let pendingPosts = JSON.parse(localStorage.getItem('fr3on_pending_posts') || '[]');
+  pendingPosts.unshift(newPost);
+  localStorage.setItem('fr3on_pending_posts', JSON.stringify(pendingPosts));
+  switchPage('homePage');
+  alert("تم إرسال إعلانك للإدارة للمراجعة والنشر بنجاح!");
+}
+
+function addNewPostToChannel() {
+  let titleVal = document.getElementById('postTitleInput').value.trim();
+  let descVal = document.getElementById('postDescInput').value.trim();
+  let imgVal = document.getElementById('postImageInput').value.trim();
+  let linkVal = document.getElementById('postLinkInput').value.trim();
+
+  let newPost = {
+    title: titleVal || 'منشور رسمي',
+    desc: descVal || '',
+    img: imgVal || '',
+    link: linkVal || '',
+    comments: [],
+    likes: 0,
+    isLiked: false
+  };
+
+  try {
+    let channelPosts = JSON.parse(localStorage.getItem('fr3on_channel_posts') || '[]');
+    channelPosts.unshift(newPost);
+    localStorage.setItem('fr3on_channel_posts', JSON.stringify(channelPosts));
+  } catch (err) {
+    let channelPosts = JSON.parse(localStorage.getItem('fr3on_channel_posts') || '[]');
+    if(channelPosts.length > 0) {
+      channelPosts.pop();
+    }
+    channelPosts.unshift(newPost);
+    localStorage.setItem('fr3on_channel_posts', JSON.stringify(channelPosts));
+  }
+  
+  document.getElementById('postTitleInput').value = '';
+  document.getElementById('postDescInput').value = '';
+  document.getElementById('postImageInput').value = '';
+  document.getElementById('postLinkInput').value = '';
+
+  loadChannelPosts();
+  alert("تم نشر المنشور في القناة بنجاح! 🚀");
+}
+
+function handleSingleImagePick(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = e => { selectedSingleImage = e.target.result; };
+    reader.readAsDataURL(file);
+  }
+}
+
+function handleImagePick(event) {
+  const file = event.target.files[0];
+  if(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      let img = new Image();
+      img.src = e.target.result;
+      img.onload = function() {
+        let canvas = document.createElement('canvas');
+        let ctx = canvas.getContext('2d');
+        let MAX_WIDTH = 500;
+        let MAX_HEIGHT = 500;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+        
+        let compressedDataUrl = canvas.toDataURL('image/jpeg', 0.5);
+        document.getElementById('postImageInput').value = compressedDataUrl;
+      };
+    };
+    reader.readAsDataURL(file);
+  }
+}
+
+function openLightBox(src) {
+  document.getElementById('lightBoxImg').src = src;
+  document.getElementById('imageLightBox').classList.add('show');
+}
+function closeLightBox() { document.getElementById('imageLightBox').classList.remove('show'); }
+function openFilterCategoryModal() { document.getElementById('filterCategoryModal').classList.add('show'); }
+function closeFilterCategoryModal() { document.getElementById('filterCategoryModal').classList.remove('show'); }
+
+function selectFilterCategory(cat, element) {
+  document.querySelectorAll('.category-option').forEach(opt => opt.classList.remove('selected'));
+  element.classList.add('selected');
+  document.getElementById('filterSelectedCategoryText').innerText = cat;
+  closeFilterCategoryModal();
+  loadAllPosts();
+}
+
+loadChannelPosts();
+</script>
+
+</body>
+</html>
