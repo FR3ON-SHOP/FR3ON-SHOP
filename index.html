@@ -576,7 +576,7 @@ header h2{
   <div style="max-width: 92%; margin: 30px auto; background: #090c10; border: 1px solid #1c2634; border-radius: 25px; padding: 30px 20px; box-shadow: 0 4px 25px rgba(0,0,0,0.8); text-align: right;" dir="rtl">
     <h2 style="color: var(--cyan); font-size: 22px; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-comment"></i> الرسائل ومحادثات العملاء</h2>
     
-    <div id="messagesAdminSection" style="display: block; margin-bottom: 25px; border-bottom: 1px solid #1c2634; padding-bottom: 20px;">
+    <div id="messagesAdminSection" style="display: none; margin-bottom: 25px; border-bottom: 1px solid #1c2634; padding-bottom: 20px;">
       <div style="color: #8b949e; font-size: 13px; margin-bottom: 12px;">طلبات الإعلانات الجديدة بانتظار موافقتك:</div>
       <div id="adminPendingRequestsContainer"></div>
     </div>
@@ -587,7 +587,7 @@ header h2{
       <div id="adminCustomerChatsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
     </div>
 
-    <div id="normalUserMessagesBox" style="display: none;">
+    <div id="normalUserMessagesBox" style="display: block;">
       <p style="color: #8b949e; font-size: 13px;">لا توجد رسائل جديدة حالياً.</p>
     </div>
   </div>
@@ -601,7 +601,7 @@ header h2{
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
           <h2 style="color: var(--cyan); font-size: 22px; font-weight: 900;">الملف الشخصي</h2>
         </div>
-        <div id="profileUserName" style="color: #fff; font-size: 20px; font-weight: bold;">إدارة فرعون</div>
+        <div id="profileUserName" style="color: #fff; font-size: 20px; font-weight: bold;">زائر فرعون</div>
       </div>
       <div style="width: 70px; height: 70px; border-radius: 16px; overflow: hidden; border: 1px solid var(--cyan); flex-shrink: 0; cursor: pointer;" onclick="openLightBox(currentLogo)">
         <img class="fr3on-logo" style="width: 100%; height: 100%; object-fit: cover;" alt="Profile">
@@ -609,7 +609,7 @@ header h2{
     </div>
     
     <div style="background: #071418; border: 1px solid #162230; border-radius: 16px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
-      <div id="profileUserEmail" style="color: #fff; font-size: 14px; direction: ltr;">konbela.ff.30@gmail.com</div>
+      <div id="profileUserEmail" style="color: #fff; font-size: 14px; direction: ltr;"></div>
       <div style="color: #8b949e; font-size: 14px;">البريد الإلكتروني <i class="fa-regular fa-envelope" style="color: var(--cyan);"></i></div>
     </div>
 
@@ -618,7 +618,7 @@ header h2{
       <div style="color: #8b949e; font-size: 14px;">إجمالي المنشورات <i class="fa-solid fa-clock-rotate-left" style="color: var(--cyan);"></i></div>
     </div>
 
-    <div id="masterAdminPanel" style="display: block; background: #071418; border: 2px solid #008e95; border-radius: 20px; padding: 22px; margin-bottom: 25px;">
+    <div id="masterAdminPanel" style="display: none; background: #071418; border: 2px solid #008e95; border-radius: 20px; padding: 22px; margin-bottom: 25px;">
       <h3 style="color: var(--cyan); font-size: 18px; font-weight: 900; margin-bottom: 8px;"><i class="fa-solid fa-toolbox"></i> لوحة تحكم المطور الشاملة</h3>
       <p style="color: #8b949e; font-size: 12px; margin-bottom: 20px;">تعديل الهوية وصورة المتجر وقنوات التواصل والأرقام.</p>
       
@@ -659,15 +659,15 @@ header h2{
     </div>
     <div style="display: flex; flex-direction: column; gap: 20px;">
       <div>
-        <label style="display: block; color: #8b949e; font-size: 13px; margin-bottom: 8px; font-weight: bold;">البريد الإلكتروني</label>
+        <label style="display: block; color: #8b949e; font-size: 13px; margin-bottom: 8px; font-weight: bold;">البريد الإلكتروني أو رقم الهاتف</label>
         <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px;">
-          <input type="text" id="loginEmailInput" value="konbela.ff.30@gmail.com" placeholder="البريد" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13.5px;" dir="rtl">
+          <input type="text" id="loginEmailInput" value="" placeholder autocomplete="off" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13.5px;" dir="ltr">
         </div>
       </div>
       <div>
         <label style="display: block; color: #8b949e; font-size: 13px; margin-bottom: 8px; font-weight: bold;">كلمة المرور</label>
         <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px;">
-          <input type="password" id="loginPasswordInput" value="123456" placeholder="••••••••" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="ltr">
+          <input type="password" id="loginPasswordInput" value="" placeholder="••••••••" autocomplete="off" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 14px;" dir="ltr">
         </div>
       </div>
       <button onclick="loginSuccess()" style="background: var(--cyan); color: #000; border: 0; border-radius: 35px; padding: 15px; font-weight: 900; font-size: 16px; cursor: pointer;">دخول</button>
@@ -866,6 +866,10 @@ header h2{
 <nav class="bottom-nav" id="bottomNav"></nav>
 
 <script>
+const ADMIN_EMAIL = "konbela.ff.30@gmail.com";
+// كلمة المرور الافتراضية للمطور (يمكنك تغييرها هنا)
+const ADMIN_PASSWORD = "ChangeMe_Strong_Pass_2026";
+
 let currentLogo = localStorage.getItem('site_logo') || "https://i.ibb.co/VYvvg9V8/VYvvg9V8.jpg";
 let currentStoreName = localStorage.getItem('site_store_name') || "متجر فرعون";
 
@@ -899,11 +903,15 @@ let siteTelegram = JSON.parse(localStorage.getItem('site_telegram') || JSON.stri
 
 let isLoggedIn = false;
 let loggedInEmail = "";
-let currentUser = { name: "زائر فرعون", email: "visitor@fr3on.com", phone: "+201000000000" };
+let currentUser = { name: "زائر فرعون", email: "visitor@fr3on.com", phone: "" };
 let selectedSingleImage = "";
 let activeCountryTarget = 'ad';
 let adminActiveChatKey = "";
 let currentActivePostIndex = null;
+
+function isAdmin() {
+  return isLoggedIn && loggedInEmail === ADMIN_EMAIL;
+}
 
 const countriesList = [
   { name: "مصر", code: "+20", flag: "🇪🇬" },
@@ -1168,7 +1176,7 @@ function renderNav() {
       <a href="#" class="nav-item" id="navLogin" onclick="switchPage('loginPage', event); updateNav(this);"><i class="fa-solid fa-right-to-bracket"></i><span>دخول</span></a>
       <a href="#" class="nav-item" id="navRegister" onclick="switchPage('registerPage', event); updateNav(this);"><i class="fa-solid fa-user-plus"></i><span>حساب جديد</span></a>
     `;
-  } else if (loggedInEmail === "konbela.ff.30@gmail.com") {
+  } else if (isAdmin()) {
     if(homeAddBtn) homeAddBtn.style.display = 'flex';
     nav.innerHTML = `
       <a href="#" class="nav-item active" id="navHome" onclick="switchPage('homePage', event); updateNav(this);"><i class="fa-solid fa-house"></i><span>الرئيسية</span></a>
@@ -1195,12 +1203,12 @@ function renderNav() {
 renderNav();
 
 function getTargetChatKey() {
-  if (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) {
+  if (isAdmin() && adminActiveChatKey) {
     return adminActiveChatKey;
   }
   let identifier = isLoggedIn ? loggedInEmail : ("visitor_" + (localStorage.getItem('fr3on_visitor_id') || Math.random().toString(36).substring(7)));
-  if(!localStorage.getItem('fr3on_visitor_id')) {
-    localStorage.setItem('fr3on_visitor_id', identifier);
+  if(!isLoggedIn && !localStorage.getItem('fr3on_visitor_id')) {
+    localStorage.setItem('fr3on_visitor_id', identifier.replace('visitor_', ''));
   }
   return 'fr3on_chat_' + identifier;
 }
@@ -1209,7 +1217,7 @@ function openSupportChat(chatKey = null) {
   const modal = document.getElementById('supportChatModal');
   modal.style.display = 'flex';
 
-  if (loggedInEmail === "konbela.ff.30@gmail.com" && chatKey) {
+  if (isAdmin() && chatKey) {
     adminActiveChatKey = chatKey;
     let userName = chatKey.replace('fr3on_chat_', '');
     document.getElementById('chatHeaderTitle').innerText = "محادثة مع: " + userName;
@@ -1231,7 +1239,7 @@ function loadChatMessages() {
   let chatKey = getTargetChatKey();
 
   let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
-  if(messages.length === 0 && (!loggedInEmail || loggedInEmail !== "konbela.ff.30@gmail.com")) {
+  if(messages.length === 0 && !isAdmin()) {
     messages = [
       { sender: 'admin', text: 'أهلاً بك في متجر فرعون! كيف يمكننا مساعدتك اليوم؟', time: new Date().toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'}), type: 'text' }
     ];
@@ -1240,7 +1248,7 @@ function loadChatMessages() {
 
   container.innerHTML = '';
   messages.forEach((msg, index) => {
-    let isMe = (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) ? (msg.sender === 'admin') : (msg.sender === 'user');
+    let isMe = (isAdmin() && adminActiveChatKey) ? (msg.sender === 'admin') : (msg.sender === 'user');
     
     let bubbleBg = isMe ? '#032123' : '#161b22';
     let alignSide = isMe ? 'flex-end' : 'flex-start';
@@ -1318,7 +1326,7 @@ function sendUserChatMessage() {
   if(!text) return;
 
   let chatKey = getTargetChatKey();
-  let senderRole = (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) ? 'admin' : 'user';
+  let senderRole = (isAdmin() && adminActiveChatKey) ? 'admin' : 'user';
 
   let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
   messages.push({ sender: senderRole, text: text, time: new Date().toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'}), type: 'text', reaction: '', isDeleted: false });
@@ -1344,7 +1352,7 @@ function sendChatImage(event) {
     const reader = new FileReader();
     reader.onload = function(e) {
       let chatKey = getTargetChatKey();
-      let senderRole = (loggedInEmail === "konbela.ff.30@gmail.com" && adminActiveChatKey) ? 'admin' : 'user';
+      let senderRole = (isAdmin() && adminActiveChatKey) ? 'admin' : 'user';
 
       let messages = JSON.parse(localStorage.getItem(chatKey) || '[]');
       messages.push({ sender: senderRole, text: e.target.result, time: new Date().toLocaleTimeString('ar-EG', {hour: '2-digit', minute:'2-digit'}), type: 'img', reaction: '', isDeleted: false });
@@ -1361,42 +1369,112 @@ function sendChatImage(event) {
   }
 }
 
-function loginSuccess() {
-  loggedInEmail = document.getElementById('loginEmailInput').value.trim() || "konbela.ff.30@gmail.com";
+/* ================= الحسابات وتسجيل الدخول ================= */
+
+function getUsers() {
+  try {
+    return JSON.parse(localStorage.getItem('fr3on_users') || '[]');
+  } catch (e) {
+    return [];
+  }
+}
+
+function startSession(user) {
   isLoggedIn = true;
-  currentUser.email = loggedInEmail;
-  currentUser.name = (loggedInEmail === "konbela.ff.30@gmail.com") ? "إدارة فرعون" : loggedInEmail.split('@')[0];
+  loggedInEmail = user.email;
+  currentUser = { name: user.name, email: user.email, phone: user.phone || "" };
+  localStorage.setItem('fr3on_session', user.email);
   renderNav();
   updateProfileDisplay();
   switchPage('homePage');
 }
 
+function loginSuccess() {
+  const email = document.getElementById('loginEmailInput').value.trim().toLowerCase();
+  const pass = document.getElementById('loginPasswordInput').value;
+
+  if (!email || !pass) { alert("اكتب البريد وكلمة المرور"); return; }
+
+  if (email === ADMIN_EMAIL) {
+    if (pass !== ADMIN_PASSWORD) { alert("كلمة مرور المطور غير صحيحة"); return; }
+    startSession({ name: "إدارة فرعون", email: ADMIN_EMAIL });
+  } else {
+    const user = getUsers().find(u => u.email === email && u.password === pass);
+    if (!user) { alert("بيانات الدخول غير صحيحة"); return; }
+    startSession(user);
+  }
+
+  document.getElementById('loginEmailInput').value = '';
+  document.getElementById('loginPasswordInput').value = '';
+}
+
 function registerSuccess() {
-  currentUser.name = document.getElementById('regNameInput').value.trim() || "مستخدم";
-  let emailField = document.getElementById('regEmailInput');
-  loggedInEmail = emailField ? (emailField.value.trim() || "user@fr3on.com") : "user@fr3on.com";
-  currentUser.email = loggedInEmail;
-  isLoggedIn = true;
-  renderNav();
-  updateProfileDisplay();
-  switchPage('homePage');
+  const name = document.getElementById('regNameInput').value.trim();
+  const pass = document.getElementById('regPasswordInput').value;
+  const confirmPass = document.getElementById('regConfirmPasswordInput').value;
+  const phoneMode = document.getElementById('regPhoneContainer').style.display === 'block';
+
+  let id;
+  if (phoneMode) {
+    const phone = document.getElementById('regPhoneInput').value.trim();
+    id = phone ? (document.getElementById('regCode').innerText + phone) : "";
+  } else {
+    const el = document.getElementById('regEmailInput');
+    id = el ? el.value.trim().toLowerCase() : "";
+  }
+
+  if (!name || !id) { alert("أكمل كل البيانات"); return; }
+  if (pass.length < 6) { alert("كلمة المرور 6 أحرف على الأقل"); return; }
+  if (pass !== confirmPass) { alert("كلمتا المرور غير متطابقتين"); return; }
+  if (id === ADMIN_EMAIL) { alert("هذا البريد مخصص للإدارة، يرجى تسجيل الدخول به مباشرة"); return; }
+
+  const users = getUsers();
+  if (users.some(u => u.email === id)) { alert("الحساب موجود بالفعل، سجّل دخولك"); return; }
+
+  const user = { name: name, email: id, password: pass };
+  users.push(user);
+  localStorage.setItem('fr3on_users', JSON.stringify(users));
+
+  document.getElementById('regNameInput').value = '';
+  document.getElementById('regPasswordInput').value = '';
+  document.getElementById('regConfirmPasswordInput').value = '';
+
+  startSession(user);
 }
 
 function logout() {
   isLoggedIn = false;
   loggedInEmail = "";
-  currentUser = { name: "زائر فرعون", email: "visitor@fr3on.com", phone: "+201000000000" };
+  currentUser = { name: "زائر فرعون", email: "visitor@fr3on.com", phone: "" };
+  localStorage.removeItem('fr3on_session');
   renderNav();
+  updateProfileDisplay();
   switchPage('homePage');
+}
+
+function restoreSession() {
+  const email = localStorage.getItem('fr3on_session');
+  if (!email) return;
+  if (email === ADMIN_EMAIL) {
+    startSession({ name: "إدارة فرعون", email: ADMIN_EMAIL });
+  } else {
+    const user = getUsers().find(u => u.email === email);
+    if (user) startSession(user);
+    else localStorage.removeItem('fr3on_session');
+  }
 }
 
 function updateProfileDisplay() {
   document.getElementById('profileUserName').innerText = currentUser.name;
-  document.getElementById('profileUserEmail').innerText = currentUser.email;
+  document.getElementById('profileUserEmail').innerText = isLoggedIn ? currentUser.email : "";
+
+  const myAds = JSON.parse(localStorage.getItem('fr3on_all_posts') || '[]').filter(p => p.authorEmail === currentUser.email).length;
+  document.getElementById('profileUserAdsCount').innerText = myAds + " إعلان";
+
   const masterPanel = document.getElementById('masterAdminPanel');
   const adminPostForm = document.getElementById('adminPostFormContainer');
   
-  if (loggedInEmail === "konbela.ff.30@gmail.com") {
+  if (isAdmin()) {
     if (masterPanel) masterPanel.style.display = "block";
     if (adminPostForm) adminPostForm.style.display = "block";
     renderAdminEditors();
@@ -1422,17 +1500,18 @@ function renderAdminEditors() {
 }
 
 function saveCustomLogoUrl() {
+  if (!isAdmin()) return;
   let newLogoUrl = document.getElementById('customLogoInput').value.trim();
   if(newLogoUrl) {
     currentLogo = newLogoUrl;
     localStorage.setItem('site_logo', currentLogo);
     document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
-    alert("تم تثبيت وتحديث شعار المتجر بنجاح لكل الزوار! 🚀");
+    alert("تم تثبيت وتحديث شعار المتجر بنجاح! 🚀");
   }
 }
 
 function saveStoreIdentity() {
-  if (loggedInEmail !== "konbela.ff.30@gmail.com") return;
+  if (!isAdmin()) return;
   currentStoreName = document.getElementById('adminStoreNameInput').value.trim() || currentStoreName;
   localStorage.setItem('site_store_name', currentStoreName);
   document.getElementById('headerTitleText').innerText = currentStoreName;
@@ -1441,15 +1520,17 @@ function saveStoreIdentity() {
 }
 
 function addNewChannelItem() {
+  if (!isAdmin()) return;
   siteChannels.push({ name: "قناة جديدة", type: "WHATSAPP", desc: "وصف", icon: "fa-whatsapp", link: "https://whatsapp.com" });
   renderAdminEditors();
 }
 function removeChannelItem(idx) {
+  if (!isAdmin()) return;
   siteChannels.splice(idx, 1);
   renderAdminEditors();
 }
 function saveChannelsChanges() {
-  if (loggedInEmail !== "konbela.ff.30@gmail.com") return;
+  if (!isAdmin()) return;
   siteChannels = siteChannels.map((ch, idx) => ({
     ...ch,
     name: document.getElementById(`chName_${idx}`).value.trim() || ch.name,
@@ -1463,6 +1544,7 @@ function saveChannelsChanges() {
 function switchPage(pageId, event) {
   if (event) event.preventDefault();
   if (pageId === 'addAdPage' && !isLoggedIn) { switchPage('loginPage'); return; }
+  if (pageId === 'profilePage' && !isLoggedIn) { switchPage('loginPage'); return; }
   document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active-page'));
   document.getElementById(pageId).classList.add('active-page');
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1488,7 +1570,7 @@ function loadAdminMessagesRequests() {
   const container = document.getElementById('adminPendingRequestsContainer');
   const chatsContainer = document.getElementById('adminCustomerChatsContainer');
 
-  if (loggedInEmail === "konbela.ff.30@gmail.com") {
+  if (isAdmin()) {
     adminSection.style.display = 'block';
     chatsListSection.style.display = 'block';
     normalBox.style.display = 'none';
@@ -1550,6 +1632,7 @@ function loadAdminMessagesRequests() {
 }
 
 function approvePost(index) {
+  if (!isAdmin()) return;
   let pendingPosts = JSON.parse(localStorage.getItem('fr3on_pending_posts') || '[]');
   let savedPosts = JSON.parse(localStorage.getItem('fr3on_all_posts') || '[]');
   let approved = pendingPosts.splice(index, 1)[0];
@@ -1560,6 +1643,7 @@ function approvePost(index) {
 }
 
 function rejectPost(index) {
+  if (!isAdmin()) return;
   let pendingPosts = JSON.parse(localStorage.getItem('fr3on_pending_posts') || '[]');
   pendingPosts.splice(index, 1);
   localStorage.setItem('fr3on_pending_posts', JSON.stringify(pendingPosts));
@@ -1709,13 +1793,22 @@ function checkCommentEnter(e) {
   if(e.key === 'Enter') { submitNewComment(); }
 }
 
+function filterUserPosts() {
+  loadAllPosts();
+}
+
 function loadAllPosts() {
   const container = document.getElementById('allPostsContainer');
   let savedPosts = JSON.parse(localStorage.getItem('fr3on_all_posts') || '[]');
   let currentCategory = document.getElementById('filterSelectedCategoryText').innerText;
+  let searchInput = document.getElementById('searchPostsInput');
+  let query = searchInput ? searchInput.value.trim().toLowerCase() : '';
   
   if(currentCategory && currentCategory !== 'الكل') {
     savedPosts = savedPosts.filter(p => p.category === currentCategory);
+  }
+  if(query) {
+    savedPosts = savedPosts.filter(p => (p.title || '').toLowerCase().includes(query) || (p.desc || '').toLowerCase().includes(query));
   }
 
   container.innerHTML = savedPosts.length === 0 ? '<p style="color:#8b949e; text-align:center;">لا توجد منشورات في هذا القسم.</p>' : '';
@@ -1733,6 +1826,7 @@ function loadAllPosts() {
 }
 
 function submitUserAd() {
+  if (!isLoggedIn) { switchPage('loginPage'); return; }
   let currencySymbol = document.getElementById('selectedCurrencyText').innerText;
   let newPost = {
     title: 'إعلان جديد',
@@ -1752,6 +1846,7 @@ function submitUserAd() {
 }
 
 function addNewPostToChannel() {
+  if (!isAdmin()) return;
   let titleVal = document.getElementById('postTitleInput').value.trim();
   let descVal = document.getElementById('postDescInput').value.trim();
   let imgVal = document.getElementById('postImageInput').value.trim();
@@ -1853,7 +1948,12 @@ function selectFilterCategory(cat, element) {
   loadAllPosts();
 }
 
-loadChannelPosts();
+// تشغيل الدالة أول ما الصفحة تفتح لضمان استرجاع الحساب المحفوظ فوراً
+window.onload = function() {
+  loadChannelPosts();
+  restoreSession();
+};
+
 </script>
 
 </body>
