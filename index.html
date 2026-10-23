@@ -623,11 +623,10 @@ header h2{
       <p style="color: #8b949e; font-size: 12px; margin-bottom: 20px;">تعديل الهوية وصورة المتجر وقنوات التواصل والأرقام.</p>
       
       <div style="margin-bottom: 20px; border-bottom: 1px solid #162230; padding-bottom: 15px;">
-        <label style="color: #8b949e; font-size: 12px; display: block; margin-bottom: 8px;">صورة شعار المتجر (اللوجو - محفوظة دائماً)</label>
+        <label style="color: #8b949e; font-size: 12px; display: block; margin-bottom: 8px;">صورة شعار المتجر (اللوجو)</label>
         <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-          <button onclick="document.getElementById('adminLogoFilePicker').click()" style="background: var(--cyan); color: #000; border: 0; border-radius: 12px; padding: 10px 18px; font-weight: bold; font-size: 13px; cursor: pointer;">اختر صورة جديدة 🖼️</button>
-          <input type="file" id="adminLogoFilePicker" accept="image/*" style="display: none;" onchange="handleAdminLogoPick(event)">
-          <button onclick="resetDefaultLogo()" style="background: transparent; color: #ff4d4d; border: 1px solid #ff4d4d; border-radius: 12px; padding: 10px 14px; font-weight: bold; font-size: 13px; cursor: pointer;">استعادة الافتراضية 🔄</button>
+          <input type="text" id="customLogoInput" value="https://i.ibb.co/VYvvg9V8/VYvvg9V8.jpg" style="flex-grow:1; background:#02090c; border:1px solid #006b72; border-radius:10px; padding:10px; color:#fff; font-size:12px;" dir="ltr">
+          <button onclick="saveCustomLogoUrl()" style="background: var(--cyan); color: #000; border: 0; border-radius: 12px; padding: 10px 18px; font-weight: bold; font-size: 13px; cursor: pointer;">تثبيت الرابط 🖼️</button>
         </div>
       </div>
 
@@ -867,9 +866,7 @@ header h2{
 <nav class="bottom-nav" id="bottomNav"></nav>
 
 <script>
-const logoBase64 = "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.png";
-
-let currentLogo = localStorage.getItem('site_logo') || ("data:image/webp;base64," + logoBase64);
+let currentLogo = localStorage.getItem('site_logo') || "https://i.ibb.co/VYvvg9V8/VYvvg9V8.jpg";
 let currentStoreName = localStorage.getItem('site_store_name') || "متجر فرعون";
 
 document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
@@ -1424,52 +1421,14 @@ function renderAdminEditors() {
   });
 }
 
-function handleAdminLogoPick(event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      let img = new Image();
-      img.src = e.target.result;
-      img.onload = function() {
-        let canvas = document.createElement('canvas');
-        let ctx = canvas.getContext('2d');
-        let MAX_WIDTH = 400;
-        let MAX_HEIGHT = 400;
-        let width = img.width;
-        let height = img.height;
-
-        if (width > height) {
-          if (width > MAX_WIDTH) {
-            height *= MAX_WIDTH / width;
-            width = MAX_WIDTH;
-          }
-        } else {
-          if (height > MAX_HEIGHT) {
-            width *= MAX_HEIGHT / height;
-            height = MAX_HEIGHT;
-          }
-        }
-
-        canvas.width = width;
-        canvas.height = height;
-        ctx.drawImage(img, 0, 0, width, height);
-        
-        currentLogo = canvas.toDataURL('image/jpeg', 0.8);
-        localStorage.setItem('site_logo', currentLogo);
-        document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
-        alert("تم تغيير وتثبيت صورة المتجر بنجاح ولن تختفي عند الخروج! 🚀");
-      };
-    };
-    reader.readAsDataURL(file);
+function saveCustomLogoUrl() {
+  let newLogoUrl = document.getElementById('customLogoInput').value.trim();
+  if(newLogoUrl) {
+    currentLogo = newLogoUrl;
+    localStorage.setItem('site_logo', currentLogo);
+    document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
+    alert("تم تثبيت وتحديث شعار المتجر بنجاح لكل الزوار! 🚀");
   }
-}
-
-function resetDefaultLogo() {
-  localStorage.removeItem('site_logo');
-  currentLogo = "data:image/webp;base64," + logoBase64;
-  document.querySelectorAll(".fr3on-logo").forEach(img => { img.src = currentLogo; });
-  alert("تمت استعادة الصورة الافتراضية بنجاح!");
 }
 
 function saveStoreIdentity() {
