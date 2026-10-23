@@ -661,7 +661,7 @@ header h2{
       <div>
         <label style="display: block; color: #8b949e; font-size: 13px; margin-bottom: 8px; font-weight: bold;">البريد الإلكتروني أو رقم الهاتف</label>
         <div style="background: #071418; border: 1px solid #1c2634; border-radius: 14px; padding: 14px 16px; display: flex; align-items: center; gap: 12px;">
-          <input type="text" id="loginEmailInput" value="" placeholder autocomplete="off" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13.5px;" dir="ltr">
+          <input type="text" id="loginEmailInput" value="" placeholder="البريد الإلكتروني" autocomplete="off" style="width: 100%; background: transparent; border: 0; outline: 0; color: white; font-size: 13.5px;" dir="ltr">
         </div>
       </div>
       <div>
@@ -867,8 +867,8 @@ header h2{
 
 <script>
 const ADMIN_EMAIL = "konbela.ff.30@gmail.com";
-// كلمة المرور الافتراضية للمطور (يمكنك تغييرها هنا)
-const ADMIN_PASSWORD = "ChangeMe_Strong_Pass_2026";
+// ⚠️ غيّر كلمة السر دي لكلمة قوية خاصة بيك قبل ما ترفع الموقع
+const ADMIN_PASSWORD = "yuiopyuiop";
 
 let currentLogo = localStorage.getItem('site_logo') || "https://i.ibb.co/VYvvg9V8/VYvvg9V8.jpg";
 let currentStoreName = localStorage.getItem('site_store_name') || "متجر فرعون";
@@ -1396,7 +1396,7 @@ function loginSuccess() {
   if (!email || !pass) { alert("اكتب البريد وكلمة المرور"); return; }
 
   if (email === ADMIN_EMAIL) {
-    if (pass !== ADMIN_PASSWORD) { alert("كلمة مرور المطور غير صحيحة"); return; }
+    if (pass !== ADMIN_PASSWORD) { alert("بيانات الدخول غير صحيحة"); return; }
     startSession({ name: "إدارة فرعون", email: ADMIN_EMAIL });
   } else {
     const user = getUsers().find(u => u.email === email && u.password === pass);
@@ -1426,7 +1426,7 @@ function registerSuccess() {
   if (!name || !id) { alert("أكمل كل البيانات"); return; }
   if (pass.length < 6) { alert("كلمة المرور 6 أحرف على الأقل"); return; }
   if (pass !== confirmPass) { alert("كلمتا المرور غير متطابقتين"); return; }
-  if (id === ADMIN_EMAIL) { alert("هذا البريد مخصص للإدارة، يرجى تسجيل الدخول به مباشرة"); return; }
+  if (id === ADMIN_EMAIL) { alert("هذا البريد غير متاح"); return; }
 
   const users = getUsers();
   if (users.some(u => u.email === id)) { alert("الحساب موجود بالفعل، سجّل دخولك"); return; }
